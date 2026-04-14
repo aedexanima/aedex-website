@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aedex Anima — Handyman & Remodeling | Austin, TX</title>
+<meta name="description" content="Aedex Anima LLC — Austin's trusted handyman and remodeling crew. Fair prices, quality work. Plumbing, electrical, carpentry, painting, HVAC and more.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2D6A4F;--green-dark:#1A4731;--green-light:#E8F5EE;
+  --bg:#F7F6F2;--white:#FFFFFF;
+  --text:#1C1B18;--text2:#4A4840;--text3:#8A8880;
+  --border:#E2E0D8;
+  --shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain;flex-shrink:0}
+.nav-logo-sub{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.8px;text-transform:uppercase;margin-top:2px;padding-left:2px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color .15s}
+.nav-links a:hover{color:var(--green)}
+.btn-nav{background:var(--green) !important;color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:600;transition:background .15s !important}
+.btn-nav:hover{background:var(--green-dark) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .2s}
+.mobile-menu{display:none;background:var(--white);border-top:1px solid var(--border);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:500;color:var(--text2);padding:10px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none;color:var(--green);font-weight:700}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 55%,#3a8a64 100%);color:#fff;padding:80px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-8%;width:600px;height:600px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
+.hero h1{font-size:50px;font-weight:700;line-height:1.08;letter-spacing:-.8px;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:#74d4a4}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.82);margin-bottom:32px;line-height:1.65;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--green-dark);padding:13px 22px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s;white-space:nowrap}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:transparent;color:#fff;padding:13px 22px;border-radius:8px;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,.35);transition:all .15s;white-space:nowrap}
+.btn-outline:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.1)}
+.hero-trust{display:flex;gap:22px;margin-top:32px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.72);font-weight:500}
+.hero-photo{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;aspect-ratio:5/4;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(255,255,255,.35);font-size:13px;text-align:center;padding:24px}
+.hero-photo .ph-ico{font-size:44px;margin-bottom:4px}
+
+/* ── STATS ── */
+.stats-bar{background:var(--white);border-bottom:1px solid var(--border)}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:22px 20px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-val{font-size:28px;font-weight:700;color:var(--green);letter-spacing:-.5px;font-family:'DM Mono',monospace}
+.stat-label{font-size:12px;color:var(--text3);margin-top:3px}
+
+/* ── SECTIONS ── */
+section{padding:76px 0}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.sec-title{font-size:36px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px}
+.sec-sub{font-size:16px;color:var(--text2);line-height:1.65}
+.sec-header{margin-bottom:48px}
+.sec-header.centered{text-align:center}
+.sec-header.centered .sec-sub{max-width:560px;margin:0 auto}
+
+/* ── SERVICES ── */
+#services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:26px;transition:all .2s}
+.svc-card:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-2px)}
+.svc-ico{font-size:30px;margin-bottom:14px}
+.svc-name{font-size:16px;font-weight:600;margin-bottom:6px}
+.svc-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.svc-list{list-style:none}
+.svc-list li{font-size:12px;color:var(--text3);padding:3px 0;display:flex;align-items:baseline;gap:5px}
+.svc-list li::before{content:'→';color:var(--green);font-weight:600;flex-shrink:0}
+
+/* ── ABOUT ── */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:5fr 6fr;gap:60px;align-items:center}
+.about-photo{background:var(--border);border-radius:16px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text3);font-size:13px;text-align:center;padding:24px}
+.about-photo .ph-ico{font-size:44px}
+.about-perks{display:grid;gap:22px;margin-top:30px}
+.perk{display:flex;gap:14px;align-items:flex-start}
+.perk-ico{width:42px;height:42px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.perk-title{font-size:15px;font-weight:600;margin-bottom:3px}
+.perk-desc{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* ── PORTFOLIO ── */
+#portfolio{background:var(--white)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.port-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:box-shadow .2s}
+.port-card:hover{box-shadow:var(--shadow-lg)}
+.port-img{background:var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text3);font-size:12px;text-align:center;padding:16px}
+.port-img .ph-ico{font-size:34px}
+.port-body{padding:14px 16px;background:var(--white)}
+.port-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--green);margin-bottom:4px}
+.port-title{font-size:14px;font-weight:600;color:var(--text)}
+
+/* ── SERVICE AREA ── */
+.area-band{background:var(--green-dark);color:#fff;padding:60px 0}
+.area-inner{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.area-title{font-size:30px;font-weight:700;margin-bottom:12px}
+.area-sub{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:26px;line-height:1.6}
+.area-cities{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.area-city{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:20px;font-size:13px;color:rgba(255,255,255,.85)}
+.area-map{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(255,255,255,.35);font-size:13px;text-align:center;padding:24px}
+.area-map .ph-ico{font-size:44px}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:26px}
+.testi-stars{color:#F59E0B;font-size:14px;margin-bottom:14px;letter-spacing:3px}
+.testi-body{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:18px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-av{width:38px;height:38px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--green);flex-shrink:0}
+.testi-name{font-size:13px;font-weight:600}
+.testi-loc{font-size:11px;color:var(--text3);margin-top:1px}
+
+/* ── CONTACT ── */
+#contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:2fr 3fr;gap:56px}
+.contact-info{display:flex;flex-direction:column;gap:26px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.contact-ico{width:46px;height:46px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.contact-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);margin-bottom:3px}
+.contact-val{font-size:15px;font-weight:500}
+.contact-val a{color:var(--green);transition:opacity .15s}
+.contact-val a:hover{opacity:.75}
+.contact-note{margin-top:8px;padding:16px;background:var(--green-light);border-radius:var(--r);font-size:13px;color:var(--green-dark);line-height:1.5}
+form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--text2);margin-bottom:5px}
+input,select,textarea{width:100%;padding:10px 13px;font-size:14px;font-family:'DM Sans',sans-serif;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);background:var(--white)}
+textarea{resize:vertical;min-height:100px}
+.btn-submit{background:var(--green);color:#fff;border:none;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s;display:inline-flex;align-items:center;gap:6px}
+.btn-submit:hover{background:var(--green-dark)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+.form-note{font-size:12px;color:var(--text3);line-height:1.5}
+.form-success{display:none;padding:20px;background:var(--green-light);border-radius:var(--r);font-size:15px;color:var(--green-dark);font-weight:500;text-align:center}
+
+/* ── FOOTER ── */
+footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:36px}
+.footer-brand-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.footer-brand-sub{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.8px;color:rgba(255,255,255,.3);margin-bottom:14px}
+.footer-brand p{font-size:13px;line-height:1.65;max-width:280px}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:9px;transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:12px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+  .hero-photo{display:none}
+  .hero-sub{max-width:100%}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr}
+  .about-photo{display:none}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr;max-width:520px}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .area-inner{grid-template-columns:1fr}
+  .area-map{display:none}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:52px 0 44px}
+  .hero h1{font-size:32px}
+  section{padding:56px 0}
+  .services-grid,.portfolio-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .sec-title{font-size:28px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" style="display:flex;flex-direction:column">
+        <img src="logo.png" alt="Aedex Anima LLC">
+        <span class="nav-logo-sub">Handyman &amp; Remodeling</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#area-section">Service Area</a>
+        <a href="#contact" class="btn-nav">Get a Quote</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="#area-section" onclick="closeMenu()">Service Area</a>
+    <a href="#contact" onclick="closeMenu()">Get a Free Quote →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Austin, TX · Serving Central Texas</div>
+        <h1>Quality Work.<br><em>Fair Prices.</em><br>Every Time.</h1>
+        <p class="hero-sub">From leaky faucets to full remodels — Aedex Anima handles it right the first time. Honest estimates, reliable crew, no surprises.</p>
+        <div class="hero-btns">
+          <a href="tel:5128882668" class="btn-primary">📞 Call 512-888-2668</a>
+          <a href="#contact" class="btn-outline">Free Estimate →</a>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-item">✓ Free estimates</span>
+          <span class="trust-item">✓ Locally owned</span>
+          <span class="trust-item">✓ Satisfaction guaranteed</span>
+        </div>
+      </div>
+      <div class="hero-photo" style="background:rgba(255,255,255,.12);gap:16px">
+        <img src="logo.png" alt="Aedex Anima" style="width:200px;height:auto;background:#fff;border-radius:12px;padding:16px">
+        <span style="font-size:12px;opacity:.5">Replace with a project or team photo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-val">200+</div><div class="stat-label">Jobs Completed</div></div>
+      <div class="stat"><div class="stat-val">50+</div><div class="stat-label">Happy Clients</div></div>
+      <div class="stat"><div class="stat-val">3+</div><div class="stat-label">Years in Austin</div></div>
+      <div class="stat"><div class="stat-val">5★</div><div class="stat-label">Avg. Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow">What we do</div>
+      <div class="sec-title">Services We Offer</div>
+      <div class="sec-sub">We handle the jobs you don't have time for — done right, at a price that makes sense.</div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-ico">🔧</div>
+        <div class="svc-name">Plumbing Repairs</div>
+        <div class="svc-desc">Fast, clean fixes for leaks, fixtures, and drainage problems.</div>
+        <ul class="svc-list">
+          <li>Faucet & shower installation</li>
+          <li>Toilet repair & replacement</li>
+          <li>Garbage disposal installation</li>
+          <li>Water leak & pressure valve</li>
+          <li>Sprinkler & pipe repair</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">⚡</div>
+        <div class="svc-name">Electrical & Smart Home</div>
+        <div class="svc-desc">Modern upgrades and everyday electrical fixes.</div>
+        <ul class="svc-list">
+          <li>Smart lock & switch installation</li>
+          <li>GFI outlet installation</li>
+          <li>Light fixture & bulb replacement</li>
+          <li>Outlet covers & repairs</li>
+          <li>Smart switch & sensor setup</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">🚪</div>
+        <div class="svc-name">Carpentry & Doors</div>
+        <div class="svc-desc">Structural repairs, doors, decks, and interior finishes.</div>
+        <ul class="svc-list">
+          <li>Door repair & installation</li>
+          <li>Drywall patch & repair</li>
+          <li>Deck & fence repair</li>
+          <li>Garage door repair</li>
+          <li>Trim & baseboard installation</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">🎨</div>
+        <div class="svc-name">Painting & Finishing</div>
+        <div class="svc-desc">Clean, professional finishes that last.</div>
+        <ul class="svc-list">
+          <li>Full room interior painting</li>
+          <li>Touch-up & patch painting</li>
+          <li>Doors, baseboards & trim</li>
+          <li>Caulking & sealing</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">❄️</div>
+        <div class="svc-name">HVAC & Appliances</div>
+        <div class="svc-desc">Keep your home comfortable and running smoothly.</div>
+        <ul class="svc-list">
+          <li>AC maintenance & fan replacement</li>
+          <li>Microwave & dishwasher repair</li>
+          <li>Washer, dryer & fridge repair</li>
+          <li>Appliance installation</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">🌿</div>
+        <div class="svc-name">Yard & Exterior</div>
+        <div class="svc-desc">Curb appeal and outdoor upkeep handled.</div>
+        <ul class="svc-list">
+          <li>Lawn mowing & yard maintenance</li>
+          <li>Tree trimming & removal</li>
+          <li>Gutter cleaning</li>
+          <li>Trash & debris removal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="ph-ico">👷</div>
+        <span>Add a team or<br>job site photo here</span>
+      </div>
+      <div>
+        <div class="sec-eyebrow">About us</div>
+        <div class="sec-title">Austin-Based.<br>Locally Owned.</div>
+        <p style="color:var(--text2);font-size:15px;line-height:1.75;margin-bottom:12px">
+          Aedex Anima LLC is a handyman and remodeling company serving Austin and surrounding Central Texas. Founded by Levi Bernard, we've built our reputation on showing up, doing the work right, and charging fairly.
+        </p>
+        <p style="color:var(--text2);font-size:15px;line-height:1.75">
+          We work with homeowners, landlords, and property managers. No job is too small — and we handle major remodels too.
+        </p>
+        <div class="about-perks">
+          <div class="perk">
+            <div class="perk-ico">💰</div>
+            <div>
+              <div class="perk-title">Fair, Transparent Pricing</div>
+              <div class="perk-desc">You get a clear estimate before any work starts. No surprise charges, no hidden fees.</div>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-ico">🤝</div>
+            <div>
+              <div class="perk-title">Reliable & On Time</div>
+              <div class="perk-desc">We show up when we say we will and keep you updated throughout the job.</div>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-ico">🔨</div>
+            <div>
+              <div class="perk-title">Quality Craftsmanship</div>
+              <div class="perk-desc">We take pride in doing the job right — not just fast. Every time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Our work</div>
+      <div class="sec-title">Recent Projects</div>
+      <div class="sec-sub">A sample of what we've done around Austin. Swap these placeholders with your before/after photos.</div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🚿</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Plumbing</div><div class="port-title">Bathroom Faucet & Shower Replacement</div></div>
+      </div>
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🏗️</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Carpentry</div><div class="port-title">Full Fence Replacement — Cedar Park</div></div>
+      </div>
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🎨</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Painting</div><div class="port-title">Full Interior Paint — Austin Home</div></div>
+      </div>
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🔑</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Electrical</div><div class="port-title">Smart Lock & Switch Installation</div></div>
+      </div>
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🌿</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Yard</div><div class="port-title">Full Yard Cleanup & Tree Trimming</div></div>
+      </div>
+      <div class="port-card">
+        <div class="port-img"><div class="ph-ico">🏠</div><span>Before / After photo</span></div>
+        <div class="port-body"><div class="port-cat">Remodeling</div><div class="port-title">Full Property Turnover — Rental Unit</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE AREA ═══ -->
+<div class="area-band" id="area-section">
+  <div class="container">
+    <div class="area-inner">
+      <div>
+        <div class="area-title">Serving Austin &amp; Surrounding Areas</div>
+        <div class="area-sub">We cover most of Central Texas. Not sure if we come to you? Just give us a call and we'll let you know.</div>
+        <div class="area-cities">
+          <span class="area-city">Austin</span>
+          <span class="area-city">Cedar Park</span>
+          <span class="area-city">Round Rock</span>
+          <span class="area-city">Pflugerville</span>
+          <span class="area-city">Hutto</span>
+          <span class="area-city">Georgetown</span>
+          <span class="area-city">Manor</span>
+          <span class="area-city">Buda</span>
+          <span class="area-city">Kyle</span>
+          <span class="area-city">Leander</span>
+        </div>
+        <a href="tel:5128882668" class="btn-primary" style="margin-top:8px">📞 Call to check your area</a>
+      </div>
+      <div class="area-map">
+        <div class="ph-ico">🗺️</div>
+        <span>Add a map image or<br>Google Maps embed here</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Reviews</div>
+      <div class="sec-title">What Our Clients Say</div>
+      <div class="sec-sub">Replace these with real reviews once you collect them — or pull directly from Google.</div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-body">"Levi and his team fixed our plumbing issue the same day I called. Honest about what needed to be done and didn't try to upsell me. Will definitely call again."</div>
+        <div class="testi-author">
+          <div class="testi-av">P</div>
+          <div><div class="testi-name">Paul K.</div><div class="testi-loc">Austin, TX · Property Owner</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-body">"Had a fence replaced and the yard cleaned up at one of my rentals. Great price, great crew, done on schedule. Exactly what a landlord needs."</div>
+        <div class="testi-author">
+          <div class="testi-av">M</div>
+          <div><div class="testi-name">Merav E.</div><div class="testi-loc">Cedar Park, TX · Landlord</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-body">"Fast, clean, and fair. Got a quote the same day I reached out and the work was done by end of week. Highly recommend for any property work."</div>
+        <div class="testi-author">
+          <div class="testi-av">A</div>
+          <div><div class="testi-name">Andrea M.</div><div class="testi-loc">Austin, TX · Homeowner</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Get in touch</div>
+      <div class="sec-title">Request a Free Estimate</div>
+      <div class="sec-sub">Tell us what you need and we'll get back to you within 1 business day.</div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-ico">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val"><a href="tel:5128882668">512-888-2668</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:aedexanima@gmail.com">aedexanima@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">📍</div>
+          <div>
+            <div class="contact-label">Service Area</div>
+            <div class="contact-val">Austin, TX &amp; Central Texas</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">🕐</div>
+          <div>
+            <div class="contact-label">Hours</div>
+            <div class="contact-val">Mon–Sat · 8am to 6pm</div>
+          </div>
+        </div>
+        <div class="contact-note">
+          💡 <strong>For urgent jobs</strong> — call or text 512-888-2668 directly. We try to respond to same-day requests.
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Your name *</label>
+              <input type="text" id="f-name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone *</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(512) 000-0000" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="john@email.com">
+          </div>
+          <div class="field">
+            <label for="f-service">Service needed</label>
+            <select id="f-service" name="service">
+              <option value="">— select a category —</option>
+              <option>Plumbing</option>
+              <option>Electrical / Smart Home</option>
+              <option>Carpentry / Doors</option>
+              <option>Painting</option>
+              <option>HVAC / Appliances</option>
+              <option>Yard / Exterior</option>
+              <option>Remodeling</option>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-address">Property address</label>
+            <input type="text" id="f-address" name="address" placeholder="123 Main St, Austin, TX">
+          </div>
+          <div class="field">
+            <label for="f-message">Describe the job *</label>
+            <textarea id="f-message" name="message" placeholder="Tell us what needs to be done — the more detail the better..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submit-btn">Send Request →</button>
+          <div class="form-note">We'll respond within 1 business day. For urgent jobs, call us directly.</div>
+        </form>
+        <div class="form-success" id="form-success">
+          ✅ <strong>Request sent!</strong> We'll be in touch within 1 business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="margin-bottom:14px"><img src="logo.png" alt="Aedex Anima LLC" style="height:56px;width:auto;background:#fff;border-radius:8px;padding:6px 10px"></div>
+        <div class="footer-brand-sub">Handyman &amp; Remodeling · Austin, TX</div>
+        <p>Quality work at fair prices. Serving Austin and Central Texas. Locally owned and operated.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Plumbing Repairs</a>
+        <a href="#services">Electrical &amp; Smart Home</a>
+        <a href="#services">Carpentry &amp; Doors</a>
+        <a href="#services">Painting &amp; Finishing</a>
+        <a href="#services">HVAC &amp; Appliances</a>
+        <a href="#services">Yard &amp; Exterior</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:5128882668">512-888-2668</a>
+        <a href="mailto:aedexanima@gmail.com">aedexanima@gmail.com</a>
+        <a href="#contact">Get a free estimate</a>
+        <a href="#area-section">Service area</a>
+        <a href="#about">About us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Aedex Anima LLC · Austin, TX</p>
+      <p style="color:rgba(255,255,255,.3)">Built in Austin</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const menu=document.getElementById('mobile-menu');
+  const btn=document.getElementById('hamburger');
+  if(menu.classList.contains('open')&&!menu.contains(e.target)&&!btn.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+
+// Contact form — Formspree AJAX submission
+const form=document.getElementById('contact-form');
+const btn=document.getElementById('submit-btn');
+const success=document.getElementById('form-success');
+form.addEventListener('submit',async function(e){
+  e.preventDefault();
+  btn.textContent='Sending...';
+  btn.disabled=true;
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){
+      form.style.display='none';
+      success.style.display='block';
+    } else {
+      alert('Something went wrong. Please call us at 512-888-2668 or email aedexanima@gmail.com.');
+      btn.textContent='Send Request →';
+      btn.disabled=false;
+    }
+  }catch(err){
+    alert('Something went wrong. Please call us at 512-888-2668 or email aedexanima@gmail.com.');
+    btn.textContent='Send Request →';
+    btn.disabled=false;
+  }
+});
+</script>
+</body>
+</html>
