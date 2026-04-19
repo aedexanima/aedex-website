@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — AEDEXBOOKS | Aedex Anima LLC</title>
+<meta name="description" content="Terms of service for AEDEXBOOKS, the business management app by Aedex Anima LLC.">
+<link rel="canonical" href="https://aedexanima.com/terms.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2D6A4F;--green-dark:#1A4731;--green-light:#E8F5EE;
+  --bg:#F7F6F2;--white:#FFFFFF;
+  --text:#1C1B18;--text2:#4A4840;--text3:#8A8880;
+  --border:#E2E0D8;
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain}
+.nav-logo-sub{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.8px;text-transform:uppercase;margin-top:2px;padding-left:2px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color .15s;text-decoration:none}
+.nav-links a:hover{color:var(--green)}
+.btn-nav{background:var(--green) !important;color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:600;transition:background .15s !important;text-decoration:none !important}
+.btn-nav:hover{background:var(--green-dark) !important;text-decoration:none !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-menu{display:none;background:var(--white);border-top:1px solid var(--border);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:500;color:var(--text2);padding:10px 0;border-bottom:1px solid var(--border);text-decoration:none}
+.mobile-menu a:last-child{border-bottom:none;color:var(--green);font-weight:700}
+
+/* PAGE HEADER */
+.page-header{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);color:#fff;padding:56px 0 48px}
+.page-header h1{font-size:38px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+.page-header p{font-size:16px;color:rgba(255,255,255,.75)}
+
+/* CONTENT */
+.policy-wrap{max-width:760px;margin:0 auto;padding:60px 24px 80px}
+.policy-wrap h2{font-size:22px;font-weight:700;color:var(--text);margin:44px 0 12px;letter-spacing:-.2px;padding-top:4px;border-top:1px solid var(--border)}
+.policy-wrap h2:first-of-type{margin-top:0;border-top:none}
+.policy-wrap p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:14px}
+.policy-wrap ul{margin:0 0 16px 20px}
+.policy-wrap ul li{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:6px}
+.callout{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:18px 20px;margin:24px 0}
+.callout p{margin:0;font-size:14px;color:var(--green-dark);font-weight:500;line-height:1.65}
+.updated{display:inline-block;background:var(--white);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px;font-family:'DM Mono',monospace;color:var(--text3);margin-bottom:32px}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:36px}
+.footer-brand-sub{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.8px;color:rgba(255,255,255,.3);margin-bottom:14px}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:9px;transition:color .15s;text-decoration:none}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:12px}
+
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .page-header h1{font-size:28px}
+  .policy-wrap{padding:40px 24px 60px}
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" style="display:flex;flex-direction:column">
+        <img src="/logo.svg" alt="Aedex Anima LLC">
+        <span class="nav-logo-sub">Handyman &amp; Remodeling</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#area-section">Service Area</a>
+        <a href="/#contact" class="btn-nav">Get a Quote</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#services" onclick="closeMenu()">Services</a>
+    <a href="/#about" onclick="closeMenu()">About</a>
+    <a href="/#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="/#area-section" onclick="closeMenu()">Service Area</a>
+    <a href="/#contact" onclick="closeMenu()">Get a Free Quote →</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <p>AEDEXBOOKS — Business Management App by Aedex Anima LLC</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="policy-wrap">
+  <span class="updated">Last updated: April 19, 2026</span>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>By accessing or using AEDEXBOOKS ("the App"), available at <a href="https://aedexbooks.aedexanima.com" target="_blank" rel="noopener">aedexbooks.aedexanima.com</a>, you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+  <p>These Terms apply to all users who have been granted access to AEDEXBOOKS by Aedex Anima LLC.</p>
+
+  <h2>2. Description of Service</h2>
+  <p>AEDEXBOOKS is a web-based business management application that allows contractors and service businesses to manage clients, jobs, invoices, estimates, expenses, and contractors. The App integrates with Google Workspace services (Sheets, Drive, Gmail) using your own Google account.</p>
+
+  <div class="callout">
+    <p>Your data is stored in your own Google account. Aedex Anima LLC does not store copies of your business data on its servers.</p>
+  </div>
+
+  <h2>3. Access and Eligibility</h2>
+  <p>Access to AEDEXBOOKS is granted by invitation only. To use the App you must:</p>
+  <ul>
+    <li>Have a valid Google account</li>
+    <li>Have been granted access by Aedex Anima LLC</li>
+    <li>Be at least 18 years of age</li>
+    <li>Use the App for lawful business purposes only</li>
+  </ul>
+  <p>We reserve the right to revoke access at any time, for any reason, with or without notice.</p>
+
+  <h2>4. Your Responsibilities</h2>
+  <p>You are responsible for:</p>
+  <ul>
+    <li>The accuracy and legality of all data you enter into the App</li>
+    <li>Maintaining the security of your Google account credentials</li>
+    <li>Ensuring any invoices, estimates, or communications sent through the App comply with applicable laws</li>
+    <li>Backing up your own data — your data lives in your Google Sheet and we recommend keeping it backed up</li>
+    <li>Any taxes, fees, or obligations associated with your business operations</li>
+  </ul>
+
+  <h2>5. Acceptable Use</h2>
+  <p>You agree not to use AEDEXBOOKS to:</p>
+  <ul>
+    <li>Violate any applicable law or regulation</li>
+    <li>Send spam, unsolicited messages, or fraudulent invoices</li>
+    <li>Attempt to reverse engineer, copy, or redistribute the App</li>
+    <li>Interfere with or disrupt the App or its infrastructure</li>
+    <li>Use the App on behalf of a third party without their consent</li>
+  </ul>
+
+  <h2>6. Google Services</h2>
+  <p>AEDEXBOOKS uses Google APIs to provide its functionality. Your use of Google services through the App is also subject to <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Google's Terms of Service</a>. We are not affiliated with or endorsed by Google LLC.</p>
+  <p>We request only the minimum Google permissions necessary to operate the App. You can revoke these permissions at any time via your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account settings</a>.</p>
+
+  <h2>7. Intellectual Property</h2>
+  <p>The AEDEXBOOKS application, including its design, code, and interface, is owned by Aedex Anima LLC. Your business data — clients, jobs, invoices, and all records you create — belongs to you.</p>
+  <p>You may not copy, reproduce, or redistribute the App or any part of it without written permission from Aedex Anima LLC.</p>
+
+  <h2>8. Disclaimer of Warranties</h2>
+  <p>AEDEXBOOKS is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the App will be error-free, uninterrupted, or free of security vulnerabilities.</p>
+  <p>We are not responsible for any loss of data resulting from Google service outages, account issues, or any other cause outside our control.</p>
+
+  <h2>9. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, Aedex Anima LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use AEDEXBOOKS, including but not limited to loss of business data, lost profits, or business interruption.</p>
+  <p>Our total liability to you for any claim arising from these Terms or your use of the App shall not exceed the amount you paid us for access to the App in the twelve months preceding the claim.</p>
+
+  <h2>10. Changes to the App or Terms</h2>
+  <p>We reserve the right to modify or discontinue AEDEXBOOKS at any time, with or without notice. We may update these Terms from time to time — when we do, we will update the "Last updated" date above. Continued use of the App after changes constitutes acceptance of the new Terms.</p>
+
+  <h2>11. Governing Law</h2>
+  <p>These Terms are governed by the laws of the State of Texas, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the App shall be resolved in the courts of Travis County, Texas.</p>
+
+  <h2>12. Contact</h2>
+  <p>Questions about these Terms? Contact us:</p>
+  <ul>
+    <li><strong>Email:</strong> <a href="mailto:aedexanima@gmail.com">aedexanima@gmail.com</a></li>
+    <li><strong>Phone:</strong> <a href="tel:5128882668">512-888-2668</a></li>
+    <li><strong>Business:</strong> Aedex Anima LLC · Austin, TX</li>
+  </ul>
+
+  <p style="margin-top:32px"><a href="/privacy.html">← View Privacy Policy</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="margin-bottom:14px"><img src="/logo.png" alt="Aedex Anima LLC" style="height:56px;width:auto;background:#fff;border-radius:8px;padding:6px 10px"></div>
+        <div class="footer-brand-sub">Handyman &amp; Remodeling · Austin, TX</div>
+        <p style="font-size:13px;line-height:1.65;max-width:280px">Quality work at fair prices. Serving Austin and Central Texas. Locally owned and operated.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="/#services">Plumbing Repairs</a>
+        <a href="/#services">Electrical &amp; Smart Home</a>
+        <a href="/#services">Carpentry &amp; Doors</a>
+        <a href="/#services">Painting &amp; Finishing</a>
+        <a href="/#services">HVAC &amp; Appliances</a>
+        <a href="/#services">Yard &amp; Exterior</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:5128882668">512-888-2668</a>
+        <a href="mailto:aedexanima@gmail.com">aedexanima@gmail.com</a>
+        <a href="/#contact">Get a free estimate</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Aedex Anima LLC · Austin, TX</p>
+      <p style="color:rgba(255,255,255,.3)">Built in Austin</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const menu=document.getElementById('mobile-menu');
+  const hamburger=document.querySelector('.hamburger');
+  if(menu.classList.contains('open')&&!menu.contains(e.target)&&!hamburger.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
