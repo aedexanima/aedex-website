@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEDEXBOOKS — Simple Business App for Contractors | Aedex Anima LLC</title>
+<meta name="description" content="AEDEXBOOKS is the simple business management app built for contractors. Track clients, jobs, invoices, expenses, and taxes — without the bloat. Works for plumbers, electricians, roofers, lawn care, and any trade business.">
+<link rel="canonical" href="https://aedexanima.com/aedexbooks">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aedexanima.com/aedexbooks">
+<meta property="og:title" content="AEDEXBOOKS — Simple Business App for Contractors">
+<meta property="og:description" content="Track clients, jobs, invoices, and expenses without the bloat. Built for plumbers, electricians, roofers, handymen, and any trade business.">
+<meta property="og:image" content="https://aedexanima.com/logo.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AEDEXBOOKS — Simple Business App for Contractors">
+<meta name="twitter:description" content="The simple business app for contractors. $149 one-time, no monthly fees, no lock-in. Your data lives in your own Google Drive.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AEDEXBOOKS",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://aedexbooks.aedexanima.com",
+  "description": "Simple business management app for contractors. Manage clients, jobs, invoices, estimates, expenses, and taxes. Works for any trade business.",
+  "author": {
+    "@type": "Organization",
+    "name": "Aedex Anima LLC",
+    "url": "https://aedexanima.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "keywords": "contractor business app, contractor invoicing, plumber business software, electrician invoicing, roofer business management, lawn care invoicing, trade business app, contractor expense tracking, contractor tax software"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much does AEDEXBOOKS cost?","acceptedAnswer":{"@type":"Answer","text":"AEDEXBOOKS is a one-time payment of <span class="app-cost"></span>. There is no monthly subscription, no per-user fee, and no recurring charges. Pay once, use it forever including all future updates."}},
+    {"@type":"Question","name":"What do I need to get started?","acceptedAnswer":{"@type":"Answer","text":"Just a Google account. The app runs entirely in your browser — no download, no install. On first sign-in it automatically creates a Google Sheet in your Drive to store all your data."}},
+    {"@type":"Question","name":"Where does my data get stored?","acceptedAnswer":{"@type":"Answer","text":"Everything — clients, jobs, invoices, expenses — is stored in a single Google Sheet in your own Google Drive. Aedex Anima LLC never sees, stores, or owns your business data."}},
+    {"@type":"Question","name":"Does it work on my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes — mobile is the primary design target. The app is built to be used on a phone between jobs. You can add it to your home screen like a native app. Works on iPhone and Android."}},
+    {"@type":"Question","name":"I already have clients in a spreadsheet. Do I have to start over?","acceptedAnswer":{"@type":"Answer","text":"No. Because your data lives in a real Google Sheet, you can paste existing clients, jobs, or expense records directly into the sheet. The app reads it on every load."}},
+    {"@type":"Question","name":"Can I send invoices directly to clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. The app generates a professional PDF invoice and emails it to your client directly from your Gmail account with one tap."}},
+    {"@type":"Question","name":"How does expense tracking help with taxes?","acceptedAnswer":{"@type":"Answer","text":"Every expense you log is tagged with an IRS Schedule C category — materials, vehicle, subcontractors, tools, phone, insurance, and more. At tax time your records are already organized the way your accountant needs them."}},
+    {"@type":"Question","name":"Does it work for my trade? I'm not a handyman.","acceptedAnswer":{"@type":"Answer","text":"Yes. AEDEXBOOKS is built for any contractor or service business — plumbers, electricians, roofers, HVAC techs, lawn care, painters, remodelers, general contractors."}},
+    {"@type":"Question","name":"What happens to my data if I stop using the app?","acceptedAnswer":{"@type":"Answer","text":"Nothing happens to it — it stays in your Google Drive exactly as-is. You can download it as a CSV or Excel file or open it in Google Sheets. There's no vendor lock-in and nothing to cancel."}},
+    {"@type":"Question","name":"How do I get access?","acceptedAnswer":{"@type":"Answer","text":"Email aedexanima@gmail.com with your name and Google email address. We grant access manually — usually same day. No sales call, no demo, no credit card."}}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2D6A4F;--green-dark:#1A4731;--green-light:#E8F5EE;
+  --bg:#F7F6F2;--white:#FFFFFF;
+  --text:#1C1B18;--text2:#4A4840;--text3:#8A8880;
+  --border:#E2E0D8;
+  --shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --r:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:76px 0}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.sec-title{font-size:36px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px}
+.sec-sub{font-size:16px;color:var(--text2);line-height:1.65}
+.sec-header{margin-bottom:48px}
+.sec-header.centered{text-align:center}
+.sec-header.centered .sec-sub{max-width:580px;margin:0 auto}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain}
+.nav-logo-sub{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.8px;text-transform:uppercase;margin-top:2px;padding-left:2px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color .15s}
+.nav-links a:hover{color:var(--green)}
+.btn-nav{background:var(--green) !important;color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:600;transition:background .15s !important}
+.btn-nav:hover{background:var(--green-dark) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-menu{display:none;background:var(--white);border-top:1px solid var(--border);padding:16px 24px;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:500;color:var(--text2);padding:10px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none;color:var(--green);font-weight:700}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 55%,#3a8a64 100%);color:#fff;padding:80px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-8%;width:600px;height:600px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px;font-family:'DM Mono',monospace}
+.hero h1{font-size:48px;font-weight:700;line-height:1.08;letter-spacing:-.8px;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:#74d4a4}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.82);margin-bottom:32px;line-height:1.65;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--green-dark);padding:13px 22px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s;white-space:nowrap}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:transparent;color:#fff;padding:13px 22px;border-radius:8px;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,.35);transition:all .15s;white-space:nowrap}
+.btn-outline:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.1)}
+.hero-trust{display:flex;gap:20px;margin-top:32px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.72);font-weight:500}
+.hero-mockup{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.mock-bar{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.mock-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}
+.mock-url{font-size:11px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.35);margin-left:6px}
+.mock-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.mock-stat{background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center}
+.mock-stat-val{font-size:18px;font-weight:700;color:#74d4a4;font-family:'DM Mono',monospace}
+.mock-stat-lbl{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.mock-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mock-label{font-size:12px;color:rgba(255,255,255,.7);font-weight:500}
+.mock-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.4px}
+.mock-badge.green{background:rgba(116,212,164,.2);color:#74d4a4}
+.mock-badge.yellow{background:rgba(251,191,36,.15);color:#FCD34D}
+.mock-badge.blue{background:rgba(147,197,253,.15);color:#93C5FD}
+.mock-badge.gray{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5)}
+
+/* WHO IT'S FOR */
+.who-strip{background:var(--white);border-bottom:1px solid var(--border);padding:44px 0}
+.who-label{text-align:center;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:28px}
+.who-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:24px}
+.who-pill{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:10px 18px;font-size:14px;font-weight:500;color:var(--text2);transition:all .15s}
+.who-pill:hover{border-color:var(--green);color:var(--green);background:var(--green-light)}
+.who-pill span{font-size:18px}
+.who-note{text-align:center;font-size:14px;color:var(--text3);font-style:italic}
+
+/* SIMPLICITY */
+#simplicity{background:var(--bg)}
+.simplicity-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.simple-card{border-radius:var(--r);padding:32px;border:1px solid var(--border)}
+.simple-card.them{background:var(--white)}
+.simple-card.us{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.simple-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px}
+.simple-card.them .simple-card-label{color:var(--text3)}
+.simple-card.us .simple-card-label{color:rgba(255,255,255,.5)}
+.simple-card h3{font-size:20px;font-weight:700;margin-bottom:20px;line-height:1.3}
+.simple-card.us h3{color:#fff}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pain-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5}
+.pain-list li .ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.simple-card.them .pain-list li{color:var(--text2)}
+.simple-card.us .pain-list li{color:rgba(255,255,255,.82)}
+
+/* FEATURES */
+#features{background:var(--white)}
+
+/* Hero feature card — Contractor Portal */
+.feat-hero{background:var(--green-dark);border-radius:16px;padding:48px;margin-bottom:16px;color:#fff;position:relative;overflow:hidden}
+.feat-hero::before{content:'';position:absolute;top:-40%;right:-6%;width:480px;height:480px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.feat-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative}
+.feat-hero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.75);font-family:'DM Mono',monospace;margin-bottom:20px}
+.feat-hero-ico{font-size:56px;margin-bottom:20px;line-height:1}
+.feat-hero h3{font-size:32px;font-weight:700;line-height:1.15;letter-spacing:-.4px;margin-bottom:14px;color:#fff}
+.feat-hero-desc{font-size:15px;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:24px}
+.feat-hero-callout{background:rgba(116,212,164,.12);border:1px solid rgba(116,212,164,.3);border-radius:10px;padding:14px 18px;font-size:13px;font-weight:600;color:#74d4a4;line-height:1.5;margin-bottom:0}
+.feat-hero-bullets{list-style:none;display:flex;flex-direction:column;gap:13px}
+.feat-hero-bullets li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,.82);line-height:1.5}
+.feat-hero-bullets li .bul-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+
+/* Data ownership banner */
+.data-banner{background:#F0EFE9;border:1px solid var(--border);border-radius:12px;padding:18px 28px;display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.data-banner-ico{font-size:28px;flex-shrink:0}
+.data-banner-text{font-size:14px;color:var(--text2);line-height:1.55}
+.data-banner-text strong{color:var(--text);font-weight:700}
+
+/* Feature grid cards */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:all .22s;position:relative;border-top:3px solid transparent}
+.feat-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-3px)}
+.feat-card.ac-amber{border-top-color:#F59E0B}.feat-card.ac-amber:hover{box-shadow:0 6px 24px rgba(245,158,11,.15)}
+.feat-card.ac-blue{border-top-color:#3B82F6}.feat-card.ac-blue:hover{box-shadow:0 6px 24px rgba(59,130,246,.15)}
+.feat-card.ac-teal{border-top-color:#14B8A6}.feat-card.ac-teal:hover{box-shadow:0 6px 24px rgba(20,184,166,.15)}
+.feat-card.ac-purple{border-top-color:#8B5CF6}.feat-card.ac-purple:hover{box-shadow:0 6px 24px rgba(139,92,246,.15)}
+.feat-card.ac-coral{border-top-color:#F97316}.feat-card.ac-coral:hover{box-shadow:0 6px 24px rgba(249,115,22,.15)}
+.feat-card.ac-green{border-top-color:var(--green)}.feat-card.ac-green:hover{box-shadow:0 6px 24px rgba(45,106,79,.15)}
+.feat-ico{font-size:48px;margin-bottom:18px;line-height:1}
+.feat-ico.ac-amber{filter:sepia(1) saturate(4) hue-rotate(10deg)}
+.feat-ico.ac-blue{filter:sepia(1) saturate(3) hue-rotate(190deg)}
+.feat-ico.ac-teal{filter:sepia(1) saturate(3) hue-rotate(140deg)}
+.feat-ico.ac-purple{filter:sepia(1) saturate(3) hue-rotate(240deg)}
+.feat-ico.ac-coral{filter:sepia(1) saturate(4) hue-rotate(330deg)}
+.feat-ico.ac-green{filter:sepia(1) saturate(3) hue-rotate(90deg)}
+.feat-name{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.feat-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.feat-list{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:5px}
+.feat-list li{font-size:12.5px;color:var(--text3);display:flex;align-items:baseline;gap:7px;line-height:1.5}
+.feat-list li::before{content:'→';font-weight:700;flex-shrink:0}
+.feat-card.ac-amber .feat-list li::before{color:#F59E0B}
+.feat-card.ac-blue .feat-list li::before{color:#3B82F6}
+.feat-card.ac-teal .feat-list li::before{color:#14B8A6}
+.feat-card.ac-purple .feat-list li::before{color:#8B5CF6}
+.feat-card.ac-coral .feat-list li::before{color:#F97316}
+.feat-card.ac-green .feat-list li::before{color:var(--green)}
+
+/* TAX SECTION */
+#taxes{background:var(--bg)}
+.tax-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.tax-cats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tax-cat{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.tax-cat-ico{font-size:18px;flex-shrink:0}
+.tax-cat-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3}
+.tax-cat-code{font-size:10px;font-family:'DM Mono',monospace;color:var(--text3);margin-top:1px}
+.tax-callout{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;margin-top:24px}
+.tax-callout p{font-size:13px;color:var(--green-dark);font-weight:500;line-height:1.6;margin:0}
+
+/* EXISTING DATA */
+#existing{background:var(--white)}
+.existing-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.existing-steps{display:flex;flex-direction:column;gap:20px;margin-top:8px}
+.existing-step{display:flex;gap:16px;align-items:flex-start}
+.existing-num{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace}
+.existing-step-body h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.existing-step-body p{font-size:13px;color:var(--text2);line-height:1.55}
+.existing-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.existing-card-row{display:flex;align-items:center;gap:12px;padding:12px;background:var(--white);border-radius:8px;border:1px solid var(--border)}
+.existing-card-ico{font-size:22px;flex-shrink:0}
+.existing-card-label{font-size:12px;color:var(--text3);margin-bottom:2px}
+.existing-card-val{font-size:14px;font-weight:600;color:var(--text)}
+
+/* HOW IT WORKS */
+#how{background:var(--bg)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps::before{content:'';position:absolute;top:28px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:var(--border);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--green);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Mono',monospace}
+.step-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.6;max-width:240px;margin:0 auto}
+
+/* DATA TRUST */
+.trust-band{background:var(--green-dark);color:#fff;padding:64px 0}
+.trust-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.trust-title{font-size:30px;font-weight:700;margin-bottom:14px;line-height:1.25}
+.trust-sub{font-size:15px;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:24px}
+.trust-points{display:flex;flex-direction:column;gap:14px}
+.trust-point{display:flex;align-items:flex-start;gap:12px}
+.trust-check{width:22px;height:22px;border-radius:50%;background:rgba(116,212,164,.2);border:1px solid rgba(116,212,164,.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
+.trust-point-text{font-size:14px;color:rgba(255,255,255,.8);line-height:1.5}
+.trust-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.trust-card-item{display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.05);border-radius:10px}
+.trust-card-ico{font-size:24px;flex-shrink:0}
+.trust-card-label{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:2px}
+.trust-card-val{font-size:14px;font-weight:600;color:#fff}
+
+/* FOUNDER NOTE */
+.founder-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 0}
+.founder-inner{max-width:680px;margin:0 auto;text-align:center}
+.founder-quote{font-size:20px;font-weight:500;color:var(--text);line-height:1.55;margin-bottom:20px;font-style:italic}
+.founder-quote::before{content:'\201C'}
+.founder-quote::after{content:'\201D'}
+.founder-attr{display:flex;align-items:center;justify-content:center;gap:12px}
+.founder-av{width:44px;height:44px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--green)}
+.founder-name{font-size:14px;font-weight:700;color:var(--text)}
+.founder-title{font-size:12px;color:var(--text3);margin-top:1px}
+
+/* CTA */
+.cta-section{background:var(--bg);padding:76px 0;text-align:center}
+.cta-box{background:linear-gradient(135deg,var(--green-dark),var(--green));border-radius:20px;padding:60px 48px;color:#fff;max-width:700px;margin:0 auto}
+.cta-box h2{font-size:34px;font-weight:700;margin-bottom:14px;letter-spacing:-.4px}
+.cta-box p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:32px;line-height:1.65}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--green-dark);padding:14px 28px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
+.btn-cta-white:hover{background:var(--green-light);transform:translateY(-1px)}
+.btn-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,.35);transition:all .15s}
+.btn-cta-outline:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.1)}
+.cta-note{font-size:12px;color:rgba(255,255,255,.45);margin-top:20px}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:36px}
+.footer-brand-sub{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.8px;color:rgba(255,255,255,.3);margin-bottom:14px}
+.footer-col h4{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:9px;transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:12px}
+
+/* SCREENSHOTS */
+.screenshots-section{background:#18181b;padding:76px 0;overflow:hidden}
+.screenshots-section .sec-eyebrow{color:rgba(255,255,255,.45)}
+.screenshots-section .sec-title{color:#fff}
+.screenshots-section .sec-sub{color:rgba(255,255,255,.65)}
+.screenshots-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.screenshots-tab{padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);background:transparent;transition:all .15s;font-family:'DM Sans',sans-serif}
+.screenshots-tab.active{background:#fff;color:#1C1B18;border-color:#fff}
+.screenshot-frame{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 32px 80px rgba(0,0,0,.5)}
+.screenshot-chrome{background:#2a2a2a;padding:9px 14px;display:flex;align-items:center;gap:8px}
+.chrome-dots{display:flex;gap:5px}
+.chrome-dot{width:10px;height:10px;border-radius:50%}
+.chrome-url{flex:1;background:rgba(255,255,255,.06);border-radius:4px;padding:4px 12px;font-size:11px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.3);margin:0 12px;text-align:center}
+
+/* APP SHELL */
+.app-shell{display:grid;grid-template-columns:210px 1fr;min-height:460px}
+.app-sidebar{background:#1C1B18;display:flex;flex-direction:column;font-size:12px}
+.app-sidebar-brand{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.07)}
+.app-sidebar-name{font-size:13px;font-weight:800;color:#fff;letter-spacing:.3px}
+.app-sidebar-sub{font-size:9px;font-family:'DM Mono',monospace;letter-spacing:1.2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-top:2px}
+.app-nav-section{padding:14px 16px 4px;font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.app-nav-item{padding:7px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:9px;cursor:pointer;margin:1px 6px;border-radius:6px}
+.app-nav-item.active{background:#2D6A4F;color:#fff;font-weight:600}
+.app-nav-item svg,.app-nav-item .ni{width:13px;flex-shrink:0;opacity:.7}
+.app-nav-item.active .ni{opacity:1}
+.app-sidebar-footer{margin-top:auto;padding:10px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.app-user-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.app-user-av{width:28px;height:28px;border-radius:50%;background:#2D6A4F;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.app-user-name{font-size:11px;font-weight:600;color:rgba(255,255,255,.8)}
+.app-signout{width:100%;background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.5);padding:6px;border-radius:6px;font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.app-sync{font-size:9px;color:rgba(255,255,255,.2);text-align:center;margin-top:6px;font-family:'DM Mono',monospace}
+
+/* APP MAIN */
+.app-main{background:#F7F6F2;display:flex;flex-direction:column;overflow:hidden}
+.app-topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px 0;margin-bottom:14px}
+.app-topbar-left h2{font-size:20px;font-weight:700;color:#1C1B18;line-height:1}
+.app-topbar-left p{font-size:11px;color:#8A8880;margin-top:2px}
+.app-topbar-right{display:flex;align-items:center;gap:6px}
+.app-btn{background:#2D6A4F;color:#fff;border:none;padding:7px 13px;border-radius:6px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.app-btn-outline{background:#fff;color:#2D6A4F;border:1px solid #2D6A4F;padding:7px 13px;border-radius:6px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.app-btn-sm{background:#fff;color:#4A4840;border:1px solid #E2E0D8;padding:4px 9px;border-radius:5px;font-size:10px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.app-btn-sm.green{background:#E8F5EE;color:#1A4731;border-color:#2D6A4F}
+.app-btn-sm.danger{background:#FEE2E2;color:#991B1B;border-color:#FECACA}
+.app-content{padding:0 20px 20px;overflow:hidden;flex:1}
+.app-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.app-stat-card{background:#fff;border:1px solid #E2E0D8;border-radius:8px;padding:14px}
+.app-stat-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#8A8880;margin-bottom:6px}
+.app-stat-value{font-size:18px;font-weight:700;font-family:'DM Mono',monospace;color:#1C1B18}
+.app-stat-value.green{color:#2D6A4F}
+.app-stat-value.orange{color:#EA580C}
+.app-stat-value.red{color:#DC2626}
+.app-stat-sub{font-size:10px;color:#8A8880;margin-top:3px}
+.app-two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app-panel{background:#fff;border:1px solid #E2E0D8;border-radius:8px;overflow:hidden}
+.app-panel-header{padding:10px 14px;border-bottom:1px solid #E2E0D8;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#8A8880}
+.app-job-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #F0EEE8;cursor:pointer}
+.app-job-row:last-child{border-bottom:none}
+.app-job-title{font-size:11px;font-weight:600;color:#1C1B18;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-job-client{font-size:10px;color:#8A8880;margin-top:1px}
+.app-job-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.app-inv-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #F0EEE8}
+.app-inv-row:last-child{border-bottom:none}
+.app-inv-client{font-size:11px;font-weight:600;color:#1C1B18}
+.app-inv-amount{font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:#1C1B18}
+.app-inv-date{font-size:10px;color:#8A8880}
+.app-inv-actions{display:flex;gap:5px;flex-shrink:0}
+
+/* BADGES */
+.app-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:9px;font-weight:600;letter-spacing:.3px}
+.badge-inv{background:#EDE9FE;color:#5B21B6}
+.badge-est{background:#DBEAFE;color:#1D4ED8}
+.badge-prog{background:#FEF3C7;color:#92400E}
+.badge-paid{background:#E8F5EE;color:#1A4731}
+.badge-await{background:#FEE2E2;color:#991B1B}
+
+/* DOC LIST */
+.app-doc-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #F0EEE8;background:#fff}
+.app-doc-row:nth-child(even){background:#FAFAF8}
+.app-doc-left{display:flex;flex-direction:column;gap:2px}
+.app-doc-num{font-size:10px;font-family:'DM Mono',monospace;color:#8A8880}
+.app-doc-client{font-size:11px;font-weight:600;color:#1C1B18}
+.app-doc-date{font-size:10px;color:#8A8880}
+.app-doc-right{display:flex;align-items:center;gap:6px}
+.app-doc-amount{font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:4px}
+
+/* EXPENSES */
+.exp-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #F0EEE8;background:#fff}
+.exp-row:nth-child(even){background:#FAFAF8}
+.exp-left{display:flex;align-items:center;gap:10px}
+.exp-ico{width:28px;height:28px;border-radius:6px;background:#E8F5EE;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.exp-name{font-size:11px;font-weight:600;color:#1C1B18}
+.exp-cat{font-size:9px;color:#8A8880;margin-top:1px}
+.exp-amount{font-size:12px;font-weight:700;font-family:'DM Mono',monospace;color:#1C1B18;flex-shrink:0}
+
+/* INVOICE PREVIEW */
+.inv-preview{background:#fff;border:1px solid #E2E0D8;border-radius:8px;padding:18px;font-size:11px}
+.inv-preview-hdr{display:flex;justify-content:space-between;border-bottom:2px solid #2D6A4F;padding-bottom:10px;margin-bottom:12px}
+.inv-preview-title{font-size:16px;font-weight:800;color:#2D6A4F}
+.inv-line-table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.inv-line-table th{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:#8A8880;padding:4px 6px;border-bottom:1px solid #E2E0D8;text-align:left;font-weight:700}
+.inv-line-table td{padding:5px 6px;color:#4A4840;border-bottom:1px solid #F5F4F0;font-size:11px}
+.inv-total-row{display:flex;justify-content:flex-end;gap:20px;font-size:11px;padding-top:8px;border-top:1px solid #E2E0D8}
+.inv-total-label{color:#8A8880}
+.inv-total-val{font-weight:700;font-family:'DM Mono',monospace;color:#1C1B18}
+.inv-total-val.big{color:#2D6A4F;font-size:14px}
+
+.screenshot-panel{display:none}
+.screenshot-panel.active{display:block}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.2);transform:translateY(12px);transition:transform .2s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-header{background:linear-gradient(135deg,var(--green-dark),var(--green));padding:28px 28px 24px;border-radius:16px 16px 0 0;position:relative}
+.modal-header h3{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.modal-header p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.5}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s}
+.modal-close:hover{background:rgba(255,255,255,.25)}
+.modal-body{padding:28px}
+.modal-field{margin-bottom:16px}
+.modal-field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:5px}
+.modal-field input,.modal-field select,.modal-field textarea{width:100%;padding:10px 13px;font-size:14px;font-family:'DM Sans',sans-serif;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);transition:border-color .15s;-webkit-appearance:none}
+.modal-field input:focus,.modal-field select:focus,.modal-field textarea:focus{outline:none;border-color:var(--green);background:#fff}
+.modal-field textarea{resize:vertical;min-height:80px}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-submit{width:100%;background:var(--green);color:#fff;border:none;padding:13px;border-radius:8px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .15s;margin-top:4px}
+.modal-submit:hover{background:var(--green-dark)}
+.modal-submit:disabled{opacity:.6;cursor:not-allowed}
+.modal-note{font-size:11px;color:var(--text3);text-align:center;margin-top:10px;line-height:1.5}
+.modal-success{display:none;text-align:center;padding:40px 28px}
+.modal-success.show{display:block}
+.modal-success-ico{font-size:48px;margin-bottom:16px}
+.modal-success h3{font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.modal-success p{font-size:14px;color:var(--text2);line-height:1.65}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+  .hero-mockup{display:none}
+  .simplicity-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-hero-inner{grid-template-columns:1fr}
+  .feat-hero{padding:36px}
+  .tax-inner,.existing-inner,.trust-inner{grid-template-columns:1fr}
+  .trust-card{display:none}
+  .steps::before{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:52px 0 44px}
+  .hero h1{font-size:30px}
+  .hero-sub{font-size:15px}
+  .features-grid,.steps{grid-template-columns:1fr}
+  .feat-hero{padding:28px}
+  .feat-hero h3{font-size:24px}
+  .data-banner{flex-direction:column;gap:10px;text-align:center}
+  .tax-cats{grid-template-columns:1fr}
+  .cta-box{padding:40px 24px}
+  .cta-box h2{font-size:26px}
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  section{padding:52px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" style="display:flex;flex-direction:column">
+        <img src="/logo.png" alt="Aedex Anima LLC">
+        <span class="nav-logo-sub">Handyman &amp; Remodeling</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <a href="#features">Features</a>
+        <a href="https://aedexbooks.aedexanima.com" class="btn-nav" target="_blank" rel="noopener">Open App</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#services" onclick="closeMenu()">Services</a>
+    <a href="/#about" onclick="closeMenu()">About</a>
+    <a href="/#contact" onclick="closeMenu()">Contact</a>
+    <a href="#features" onclick="closeMenu()">Features</a>
+    <a href="https://aedexbooks.aedexanima.com" target="_blank" rel="noopener">Open App →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">AEDEXBOOKS · by Aedex Anima LLC</div>
+        <h1>The business app built for <em>people who do the work</em></h1>
+        <p class="hero-sub">Manage clients, jobs, invoices, expenses, and taxes — without learning new software or paying a monthly fee. Sign in with Google and you're running.</p>
+        <div class="hero-btns">
+          <a href="#" onclick="openModal();return false;" class="btn-primary">Request Access →</a>
+          <a href="#features" class="btn-outline">See how it works</a>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-item">✓ <span class="app-cost"></span> one-time · no subscription</span>
+          <span class="trust-item">✓ Works on any device</span>
+          <span class="trust-item">✓ Your data, your Google Drive</span>
+        </div>
+      </div>
+      <div class="hero-mockup">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <span class="mock-url">aedexbooks.aedexanima.com</span>
+        </div>
+        <div class="mock-stat-row">
+          <div class="mock-stat"><div class="mock-stat-val">9</div><div class="mock-stat-lbl">Active Jobs</div></div>
+          <div class="mock-stat"><div class="mock-stat-val">$6.2k</div><div class="mock-stat-lbl">This Month</div></div>
+          <div class="mock-stat"><div class="mock-stat-val">4</div><div class="mock-stat-lbl">Unpaid</div></div>
+        </div>
+        <div class="mock-row"><span class="mock-label">Williams – Roof Replacement</span><span class="mock-badge green">IN PROGRESS</span></div>
+        <div class="mock-row"><span class="mock-label">Garcia – Electrical Panel</span><span class="mock-badge yellow">INVOICE SENT</span></div>
+        <div class="mock-row"><span class="mock-label">Patel – Lawn Maintenance</span><span class="mock-badge gray">ESTIMATE SENT</span></div>
+        <div class="mock-row"><span class="mock-label">Torres – Pipe Repair</span><span class="mock-badge blue">AWAITING PMT</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots-section">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow">See it in action</div>
+      <h2 class="sec-title" style="color:#fff">A real app. No fluff.</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.7);max-width:520px">Every screen is designed to be used on a job site — fast, clean, and mobile-friendly.</p>
+    </div>
+    <div class="screenshots-tabs">
+      <button class="screenshots-tab active" onclick="showScreen('dashboard',this)">Dashboard</button>
+      <button class="screenshots-tab" onclick="showScreen('jobs',this)">Jobs</button>
+      <button class="screenshots-tab" onclick="showScreen('docs',this)">Estimates &amp; Invoices</button>
+      <button class="screenshots-tab" onclick="showScreen('expenses',this)">Expenses</button>
+      <button class="screenshots-tab" onclick="showScreen('invoice',this)">Invoice Preview</button>
+      <button class="screenshots-tab" onclick="showScreen('send',this)">Send Invoice</button>
+    </div>
+    <div class="screenshot-frame">
+      <div class="screenshot-chrome">
+        <div class="chrome-dots">
+          <div class="chrome-dot" style="background:#FF5F57"></div>
+          <div class="chrome-dot" style="background:#FFBD2E"></div>
+          <div class="chrome-dot" style="background:#28CA41"></div>
+        </div>
+        <div class="chrome-url">aedexbooks.aedexanima.com</div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div class="screenshot-panel active" id="screen-dashboard">
+        <div class="app-shell">
+          <div class="app-sidebar">
+            <div class="app-sidebar-brand">
+              <div class="app-sidebar-name">AEDEX ANIMA LLC</div>
+              <div class="app-sidebar-sub">Business Manager</div>
+            </div>
+            <div class="app-nav-section">Overview</div>
+            <div class="app-nav-item active"><span class="ni">▪</span> Dashboard</div>
+            <div class="app-nav-section">Work</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Job Pipeline</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Clients &amp; Properties</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Jobs</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Contractors</div>
+            <div class="app-nav-section">Money</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Estimates &amp; Invoices</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Expenses</div>
+            <div class="app-nav-section">Records</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Activity Log</div>
+            <div class="app-nav-section">Settings</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Settings</div>
+            <div class="app-sidebar-footer">
+              <div class="app-user-row">
+                <div class="app-user-av">L</div>
+                <div class="app-user-name">Levi Bernard</div>
+              </div>
+              <button class="app-signout">Sign out</button>
+              <div class="app-sync">Synced 2 min ago</div>
+            </div>
+          </div>
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-left">
+                <h2>Dashboard</h2>
+                <p>Good morning, Levi — April 20, 2026</p>
+              </div>
+              <div class="app-topbar-right">
+                <button class="app-btn-outline">+ New Job</button>
+                <button class="app-btn">+ New Invoice</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="app-stats-row">
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Total Income</div>
+                  <div class="app-stat-value green">$18,640</div>
+                  <div class="app-stat-sub">YTD 2026</div>
+                </div>
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Outstanding</div>
+                  <div class="app-stat-value orange">$4,310</div>
+                  <div class="app-stat-sub">3 unpaid invoices</div>
+                </div>
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Total Expenses</div>
+                  <div class="app-stat-value red">$6,920</div>
+                  <div class="app-stat-sub">YTD 2026</div>
+                </div>
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Net Profit</div>
+                  <div class="app-stat-value red">$11,720</div>
+                  <div class="app-stat-sub">YTD 2026</div>
+                </div>
+              </div>
+              <div class="app-two-col">
+                <div class="app-panel">
+                  <div class="app-panel-header">Recent Jobs</div>
+                  <div class="app-job-row">
+                    <div><div class="app-job-title">Roof Replacement</div><div class="app-job-client">Williams, John</div></div>
+                    <div class="app-job-right"><span class="app-badge badge-prog">In Progress</span></div>
+                  </div>
+                  <div class="app-job-row">
+                    <div><div class="app-job-title">Electrical Panel Upgrade</div><div class="app-job-client">Garcia, Maria</div></div>
+                    <div class="app-job-right"><span class="app-badge badge-inv">Invoice Sent</span></div>
+                  </div>
+                  <div class="app-job-row">
+                    <div><div class="app-job-title">Deck Build — Backyard</div><div class="app-job-client">Thompson, Dale</div></div>
+                    <div class="app-job-right"><span class="app-badge badge-est">Estimate Sent</span></div>
+                  </div>
+                  <div class="app-job-row">
+                    <div><div class="app-job-title">Lawn Maintenance</div><div class="app-job-client">Patel, Raj</div></div>
+                    <div class="app-job-right"><span class="app-badge badge-prog">In Progress</span></div>
+                  </div>
+                </div>
+                <div class="app-panel">
+                  <div class="app-panel-header">Unpaid Invoices</div>
+                  <div class="app-inv-row">
+                    <div><div class="app-inv-client">Garcia, Maria</div><div class="app-inv-date">Due Apr 24</div></div>
+                    <div class="app-inv-actions"><span class="app-inv-amount">$1,850</span><button class="app-btn-sm">Remind</button></div>
+                  </div>
+                  <div class="app-inv-row">
+                    <div><div class="app-inv-client">Torres, Carmen</div><div class="app-inv-date">Due Apr 22</div></div>
+                    <div class="app-inv-actions"><span class="app-inv-amount">$640</span><button class="app-btn-sm">Remind</button></div>
+                  </div>
+                  <div class="app-inv-row">
+                    <div><div class="app-inv-client">Williams, John</div><div class="app-inv-date">Due May 4</div></div>
+                    <div class="app-inv-actions"><span class="app-inv-amount">$1,820</span><button class="app-btn-sm">Remind</button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOBS -->
+      <div class="screenshot-panel" id="screen-jobs">
+        <div class="app-shell">
+          <div class="app-sidebar">
+            <div class="app-sidebar-brand">
+              <div class="app-sidebar-name">AEDEX ANIMA LLC</div>
+              <div class="app-sidebar-sub">Business Manager</div>
+            </div>
+            <div class="app-nav-section">Overview</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Dashboard</div>
+            <div class="app-nav-section">Work</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Job Pipeline</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Clients &amp; Properties</div>
+            <div class="app-nav-item active"><span class="ni">▪</span> Jobs</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Contractors</div>
+            <div class="app-nav-section">Money</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Estimates &amp; Invoices</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Expenses</div>
+            <div class="app-nav-section">Records</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Activity Log</div>
+            <div class="app-nav-section">Settings</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Settings</div>
+            <div class="app-sidebar-footer">
+              <div class="app-user-row">
+                <div class="app-user-av">L</div>
+                <div class="app-user-name">Levi Bernard</div>
+              </div>
+              <button class="app-signout">Sign out</button>
+              <div class="app-sync">Synced 2 min ago</div>
+            </div>
+          </div>
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-left">
+                <h2>Jobs</h2>
+                <p>6 active · 2 completed this month</p>
+              </div>
+              <div class="app-topbar-right">
+                <button class="app-btn">+ New Job</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="app-panel">
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Roof Replacement</div><div class="app-job-client">Williams, John · Started Apr 15</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$3,200</span><span class="app-badge badge-prog">In Progress</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Electrical Panel Upgrade</div><div class="app-job-client">Garcia, Maria · Started Apr 10</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$1,850</span><span class="app-badge badge-inv">Invoice Sent</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Deck Build — Backyard</div><div class="app-job-client">Thompson, Dale · Started Apr 18</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$4,100</span><span class="app-badge badge-est">Estimate Sent</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Pipe Repair — Kitchen</div><div class="app-job-client">Torres, Carmen · Started Apr 8</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$640</span><span class="app-badge badge-await">Awaiting Pmt</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Lawn Maintenance — Monthly</div><div class="app-job-client">Patel, Raj · Started Apr 1</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$280</span><span class="app-badge badge-prog">In Progress</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+                <div class="app-job-row">
+                  <div><div class="app-job-title">Bathroom Tile — Master Bath</div><div class="app-job-client">Rivera, Ana · Mar 28</div></div>
+                  <div class="app-job-right"><span style="font-size:11px;font-family:'DM Mono',monospace;color:#1C1B18;margin-right:6px">$2,200</span><span class="app-badge badge-paid">Paid</span><button class="app-btn-sm" style="margin-left:6px">Edit</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESTIMATES & INVOICES LIST -->
+      <div class="screenshot-panel" id="screen-docs">
+        <div class="app-shell">
+          <div class="app-sidebar">
+            <div class="app-sidebar-brand">
+              <div class="app-sidebar-name">AEDEX ANIMA LLC</div>
+              <div class="app-sidebar-sub">Business Manager</div>
+            </div>
+            <div class="app-nav-section">Overview</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Dashboard</div>
+            <div class="app-nav-section">Work</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Job Pipeline</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Clients &amp; Properties</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Jobs</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Contractors</div>
+            <div class="app-nav-section">Money</div>
+            <div class="app-nav-item active"><span class="ni">▪</span> Estimates &amp; Invoices</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Expenses</div>
+            <div class="app-nav-section">Records</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Activity Log</div>
+            <div class="app-nav-section">Settings</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Settings</div>
+            <div class="app-sidebar-footer">
+              <div class="app-user-row">
+                <div class="app-user-av">L</div>
+                <div class="app-user-name">Levi Bernard</div>
+              </div>
+              <button class="app-signout">Sign out</button>
+              <div class="app-sync">Synced 2 min ago</div>
+            </div>
+          </div>
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-left">
+                <h2>Estimates &amp; Invoices</h2>
+                <p>3 estimates · 5 invoices · $4,310 outstanding</p>
+              </div>
+              <div class="app-topbar-right">
+                <button class="app-btn-outline">+ New Estimate</button>
+                <button class="app-btn">+ New Invoice</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="app-panel">
+                <div class="app-doc-row">
+                  <div class="app-doc-left">
+                    <div class="app-doc-num">EST-2026-018</div>
+                    <div class="app-doc-client">Thompson, Dale — Deck Build</div>
+                    <div class="app-doc-date">Sent Apr 18 · Valid 30 days</div>
+                  </div>
+                  <div class="app-doc-right">
+                    <span class="app-doc-amount">$4,100</span>
+                    <span class="app-badge badge-est">Estimate Sent</span>
+                    <button class="app-btn-sm green">Convert to Invoice</button>
+                  </div>
+                </div>
+                <div class="app-doc-row">
+                  <div class="app-doc-left">
+                    <div class="app-doc-num">INV-2026-041</div>
+                    <div class="app-doc-client">Williams, John — Roof Replacement</div>
+                    <div class="app-doc-date">Sent Apr 20 · Due May 4</div>
+                  </div>
+                  <div class="app-doc-right">
+                    <span class="app-doc-amount">$1,820</span>
+                    <span class="app-badge badge-await">Unpaid</span>
+                    <button class="app-btn-sm">Send Reminder</button>
+                  </div>
+                </div>
+                <div class="app-doc-row">
+                  <div class="app-doc-left">
+                    <div class="app-doc-num">INV-2026-040</div>
+                    <div class="app-doc-client">Garcia, Maria — Electrical Panel</div>
+                    <div class="app-doc-date">Sent Apr 12 · Due Apr 26</div>
+                  </div>
+                  <div class="app-doc-right">
+                    <span class="app-doc-amount">$1,850</span>
+                    <span class="app-badge badge-await">Unpaid</span>
+                    <button class="app-btn-sm">Send Reminder</button>
+                  </div>
+                </div>
+                <div class="app-doc-row">
+                  <div class="app-doc-left">
+                    <div class="app-doc-num">EST-2026-017</div>
+                    <div class="app-doc-client">Martinez, Kevin — HVAC Install</div>
+                    <div class="app-doc-date">Created Apr 17 · Draft</div>
+                  </div>
+                  <div class="app-doc-right">
+                    <span class="app-doc-amount">$2,400</span>
+                    <span class="app-badge badge-est" style="background:#F3F4F6;color:#6B7280">Draft</span>
+                    <button class="app-btn-sm">Send Estimate</button>
+                  </div>
+                </div>
+                <div class="app-doc-row">
+                  <div class="app-doc-left">
+                    <div class="app-doc-num">INV-2026-039</div>
+                    <div class="app-doc-client">Rivera, Ana — Bathroom Tile</div>
+                    <div class="app-doc-date">Paid Apr 10</div>
+                  </div>
+                  <div class="app-doc-right">
+                    <span class="app-doc-amount">$2,200</span>
+                    <span class="app-badge badge-paid">Paid</span>
+                    <button class="app-btn-sm">View PDF</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPENSES -->
+      <div class="screenshot-panel" id="screen-expenses">
+        <div class="app-shell">
+          <div class="app-sidebar">
+            <div class="app-sidebar-brand">
+              <div class="app-sidebar-name">AEDEX ANIMA LLC</div>
+              <div class="app-sidebar-sub">Business Manager</div>
+            </div>
+            <div class="app-nav-section">Overview</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Dashboard</div>
+            <div class="app-nav-section">Work</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Job Pipeline</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Clients &amp; Properties</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Jobs</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Contractors</div>
+            <div class="app-nav-section">Money</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Estimates &amp; Invoices</div>
+            <div class="app-nav-item active"><span class="ni">▪</span> Expenses</div>
+            <div class="app-nav-section">Records</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Activity Log</div>
+            <div class="app-nav-section">Settings</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Settings</div>
+            <div class="app-sidebar-footer">
+              <div class="app-user-row">
+                <div class="app-user-av">L</div>
+                <div class="app-user-name">Levi Bernard</div>
+              </div>
+              <button class="app-signout">Sign out</button>
+              <div class="app-sync">Synced 2 min ago</div>
+            </div>
+          </div>
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-left">
+                <h2>Expenses</h2>
+                <p>April 2026 · $4,820 logged</p>
+              </div>
+              <div class="app-topbar-right">
+                <button class="app-btn">+ Log Expense</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="app-stats-row" style="grid-template-columns:repeat(3,1fr)">
+                <div class="app-stat-card">
+                  <div class="app-stat-label">This Month</div>
+                  <div class="app-stat-value red">$4,820</div>
+                  <div class="app-stat-sub">All categories</div>
+                </div>
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Materials</div>
+                  <div class="app-stat-value" style="color:#1C1B18">$1,940</div>
+                  <div class="app-stat-sub">Sch. C Line 36</div>
+                </div>
+                <div class="app-stat-card">
+                  <div class="app-stat-label">Vehicle</div>
+                  <div class="app-stat-value" style="color:#1C1B18">$1,280</div>
+                  <div class="app-stat-sub">Sch. C Line 9</div>
+                </div>
+              </div>
+              <div class="app-panel" style="margin-top:10px">
+                <div class="exp-row">
+                  <div class="exp-left"><div class="exp-ico">🛒</div><div><div class="exp-name">Home Depot — Roofing materials</div><div class="exp-cat">Materials &amp; Supplies · Williams Roof Job · Apr 14</div></div></div>
+                  <div style="display:flex;align-items:center;gap:6px"><div class="exp-amount">$847.00</div><button class="app-btn-sm">Edit</button><button class="app-btn-sm danger">Del</button></div>
+                </div>
+                <div class="exp-row">
+                  <div class="exp-left"><div class="exp-ico">🚗</div><div><div class="exp-name">Fuel — Job site runs</div><div class="exp-cat">Vehicle &amp; Mileage · Apr 13</div></div></div>
+                  <div style="display:flex;align-items:center;gap:6px"><div class="exp-amount">$94.50</div><button class="app-btn-sm">Edit</button><button class="app-btn-sm danger">Del</button></div>
+                </div>
+                <div class="exp-row">
+                  <div class="exp-left"><div class="exp-ico">👷</div><div><div class="exp-name">Miguel R. — Roofing labor</div><div class="exp-cat">Subcontractors · Williams Roof Job · Apr 15–18</div></div></div>
+                  <div style="display:flex;align-items:center;gap:6px"><div class="exp-amount">$960.00</div><button class="app-btn-sm">Edit</button><button class="app-btn-sm danger">Del</button></div>
+                </div>
+                <div class="exp-row">
+                  <div class="exp-left"><div class="exp-ico">🔧</div><div><div class="exp-name">Milwaukee drill bit set</div><div class="exp-cat">Tools &amp; Equipment · Apr 12</div></div></div>
+                  <div style="display:flex;align-items:center;gap:6px"><div class="exp-amount">$67.99</div><button class="app-btn-sm">Edit</button><button class="app-btn-sm danger">Del</button></div>
+                </div>
+                <div class="exp-row">
+                  <div class="exp-left"><div class="exp-ico">🛡️</div><div><div class="exp-name">General liability insurance</div><div class="exp-cat">Insurance · Apr 1</div></div></div>
+                  <div style="display:flex;align-items:center;gap:6px"><div class="exp-amount">$210.00</div><button class="app-btn-sm">Edit</button><button class="app-btn-sm danger">Del</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INVOICE PREVIEW -->
+      <div class="screenshot-panel" id="screen-invoice">
+        <div class="app-shell">
+          <div class="app-sidebar">
+            <div class="app-sidebar-brand">
+              <div class="app-sidebar-name">AEDEX ANIMA LLC</div>
+              <div class="app-sidebar-sub">Business Manager</div>
+            </div>
+            <div class="app-nav-section">Overview</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Dashboard</div>
+            <div class="app-nav-section">Work</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Job Pipeline</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Clients &amp; Properties</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Jobs</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Contractors</div>
+            <div class="app-nav-section">Money</div>
+            <div class="app-nav-item active"><span class="ni">▪</span> Estimates &amp; Invoices</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Expenses</div>
+            <div class="app-nav-section">Records</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Activity Log</div>
+            <div class="app-nav-section">Settings</div>
+            <div class="app-nav-item"><span class="ni">▪</span> Settings</div>
+            <div class="app-sidebar-footer">
+              <div class="app-user-row">
+                <div class="app-user-av">L</div>
+                <div class="app-user-name">Levi Bernard</div>
+              </div>
+              <button class="app-signout">Sign out</button>
+              <div class="app-sync">Synced 2 min ago</div>
+            </div>
+          </div>
+          <div class="app-main">
+            <div class="app-topbar">
+              <div class="app-topbar-left">
+                <h2>INV-2026-041</h2>
+                <p>Williams, John — Roof Replacement</p>
+              </div>
+              <div class="app-topbar-right">
+                <button class="app-btn-outline">Download PDF</button>
+                <button class="app-btn">✉ Send Invoice</button>
+              </div>
+            </div>
+            <div class="app-content">
+              <div class="inv-preview">
+
+                <!-- HEADER: logo/name left, INVOICE pill + number right -->
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+                  <div>
+                    <div style="font-size:18px;font-weight:700;letter-spacing:-.5px;color:#2D6A4F">AEDEX</div>
+                    <div style="font-size:9px;font-weight:700;letter-spacing:1.2px;color:#555;text-transform:uppercase;margin-top:3px">Aedex Anima LLC</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="display:inline-block;background:#1a1a1a;color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 9px;border-radius:3px;margin-bottom:5px">INVOICE</div>
+                    <div style="font-size:13px;font-weight:400;color:#666;font-family:'DM Mono',monospace;letter-spacing:1.5px">INV-2026-041</div>
+                  </div>
+                </div>
+
+                <!-- DIVIDER -->
+                <div style="border-top:1px solid #e0e0e0;margin-bottom:14px"></div>
+
+                <!-- META: BILLED TO + DATES -->
+                <div style="display:flex;justify-content:space-between;margin-bottom:16px;gap:16px;font-size:11px">
+                  <div style="line-height:1.8;flex:1">
+                    <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#999;text-transform:uppercase;margin-bottom:3px">Billed To</div>
+                    <div style="font-weight:600;color:#111;font-size:12px">John Williams</div>
+                    <div style="color:#555">4821 Oakridge Dr, Austin TX</div>
+                    <div style="color:#555">john.williams@email.com</div>
+                  </div>
+                  <div style="line-height:1.8;text-align:right;font-size:10px;min-width:130px;margin-top:18px">
+                    <div><span style="color:#999">Date:</span> <strong>Apr 20, 2026</strong></div>
+                    <div><span style="color:#999">Due:</span> <strong>May 4, 2026</strong></div>
+                    <div style="color:#555">Levi Bernard · 512-888-2668</div>
+                  </div>
+                </div>
+
+                <!-- LINE ITEMS TABLE: 2-col dark header -->
+                <table style="width:100%;border-collapse:collapse;margin-bottom:4px;font-size:10px">
+                  <thead>
+                    <tr style="background:#1a1a1a">
+                      <th style="text-align:left;padding:7px 12px;font-size:9px;font-weight:700;color:#fff;letter-spacing:.8px">SERVICE</th>
+                      <th style="text-align:right;padding:7px 12px;font-size:9px;font-weight:700;color:#fff;letter-spacing:.8px">AMOUNT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid #f0eee8"><td style="padding:7px 12px;color:#333">Labor — full roof replacement (16 hrs @ $95)</td><td style="padding:7px 12px;text-align:right;font-family:'DM Mono',monospace;color:#111">$1,520.00</td></tr>
+                    <tr style="border-bottom:1px solid #f0eee8;background:#fafaf8"><td style="padding:7px 12px;color:#333">Architectural shingles, 30-yr (18 sq @ $85)</td><td style="padding:7px 12px;text-align:right;font-family:'DM Mono',monospace;color:#111">$1,530.00</td></tr>
+                    <tr style="border-bottom:1px solid #f0eee8"><td style="padding:7px 12px;color:#333">Underlayment, ice &amp; water shield</td><td style="padding:7px 12px;text-align:right;font-family:'DM Mono',monospace;color:#111">$150.00</td></tr>
+                  </tbody>
+                </table>
+
+                <!-- TOTALS BOX: right-aligned -->
+                <div style="margin-left:auto;max-width:190px;border:1px solid #e8e8e8;border-radius:5px;overflow:hidden;margin-bottom:14px">
+                  <div style="display:flex;justify-content:space-between;padding:7px 12px;font-size:10px;color:#555;background:#fafafa">
+                    <span>Subtotal</span><span style="font-family:'DM Mono',monospace">$3,200.00</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;padding:7px 12px;font-size:10px;color:#555;background:#fafafa;border-top:1px solid #eee">
+                    <span>Tax (8.25%)</span><span style="font-family:'DM Mono',monospace">$264.00</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;padding:8px 12px;font-size:11px;font-weight:700;color:#fff;background:#222">
+                    <span>TOTAL</span><span style="font-family:'DM Mono',monospace">$3,464.00</span>
+                  </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div style="font-size:9px;font-weight:400;text-align:center;color:#999;padding:8px 0 0;border-top:1px solid #eee">
+                  Zelle payments can be sent to 512-888-2668 (Aedex Anima LLC)
+                </div>
+                <div style="border-top:1px solid #e8e8e8;margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center">
+                  <div style="font-size:9px;color:#aaa">Thank you for your business.</div>
+                  <div style="font-size:9px;color:#aaa">Aedex Anima LLC · aedexanima@gmail.com</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEND INVOICE MODAL -->
+      <div class="screenshot-panel" id="screen-send">
+        <!-- dimmed app background -->
+        <div style="min-height:460px;background:#F7F6F2;display:flex;align-items:center;justify-content:center;position:relative;padding:24px">
+          <!-- blurred app content behind modal -->
+          <div style="position:absolute;inset:0;background:rgba(28,27,24,.45);z-index:1;border-radius:0 0 9px 9px"></div>
+          <!-- modal card -->
+          <div style="position:relative;z-index:2;background:#fff;border-radius:10px;width:100%;max-width:440px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden">
+            <!-- modal header -->
+            <div style="padding:16px 20px 14px;border-bottom:1px solid #E2E0D8;display:flex;justify-content:space-between;align-items:center">
+              <div style="font-size:14px;font-weight:700;color:#1C1B18">Send Invoice via Email</div>
+              <div style="font-size:16px;color:#8A8880;cursor:pointer;line-height:1">×</div>
+            </div>
+            <!-- modal body -->
+            <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px">
+
+              <!-- To -->
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#8A8880;margin-bottom:4px">To</div>
+                <div style="border:1px solid #E2E0D8;border-radius:6px;padding:8px 11px;font-size:12px;color:#1C1B18;background:#fff">john.williams@email.com</div>
+              </div>
+
+              <!-- CC -->
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#8A8880;margin-bottom:4px">CC <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div>
+                <div style="border:1px solid #E2E0D8;border-radius:6px;padding:8px 11px;font-size:12px;color:#8A8880;background:#fff"></div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#8A8880;margin-bottom:4px">Subject</div>
+                <div style="border:1px solid #E2E0D8;border-radius:6px;padding:8px 11px;font-size:12px;color:#1C1B18;background:#fff">Invoice #INV-2026-041 — 4821 Oakridge Dr</div>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#8A8880;margin-bottom:4px">Message</div>
+                <div style="border:1px solid #E2E0D8;border-radius:6px;padding:8px 11px;font-size:11px;color:#1C1B18;background:#fff;line-height:1.7;white-space:pre-wrap">Hi John,
+
+Please find attached invoice #INV-2026-041 for work at 4821 Oakridge Dr.
+
+Amount: $3,464.00
+Due date: May 4, 2026
+
+Please don't hesitate to reach out with any questions.
+
+Thank you,
+Levi Bernard
+512-888-2668
+aedexanima@gmail.com</div>
+              </div>
+
+              <!-- Include after photos -->
+              <div style="background:#F7F6F2;border:1px solid #E2E0D8;border-radius:7px;padding:10px 12px;display:flex;align-items:flex-start;gap:9px">
+                <div style="width:14px;height:14px;border:1.5px solid #2D6A4F;border-radius:3px;background:#2D6A4F;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center">
+                  <div style="width:7px;height:5px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg);margin-top:-2px"></div>
+                </div>
+                <div>
+                  <div style="font-size:11px;font-weight:600;color:#1C1B18">Include after photos link</div>
+                  <div style="font-size:10px;color:#8A8880;margin-top:2px">Adds a shareable Drive link to the email. Anyone with the link can view — no sign-in required.</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- previously sent -->
+            <div style="padding:0 20px 12px;font-size:10px;color:#8A8880">
+              <strong style="color:#4A4840">Previously sent:</strong> Apr 18, 2026 → john.williams@email.com
+            </div>
+
+            <!-- buttons -->
+            <div style="padding:12px 20px 16px;border-top:1px solid #E2E0D8;display:flex;gap:8px">
+              <button class="app-btn" style="flex:1;padding:9px;font-size:12px">✉ Send</button>
+              <button class="app-btn-outline" style="padding:9px 16px;font-size:12px">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<div class="who-strip">
+  <div class="container">
+    <div class="who-label">Built for any trade or service business</div>
+    <div class="who-grid">
+      <div class="who-pill"><span>🔧</span> Plumbers</div>
+      <div class="who-pill"><span>⚡</span> Electricians</div>
+      <div class="who-pill"><span>🏠</span> Roofers</div>
+      <div class="who-pill"><span>❄️</span> HVAC</div>
+      <div class="who-pill"><span>🌿</span> Lawn Care</div>
+      <div class="who-pill"><span>🎨</span> Painters</div>
+      <div class="who-pill"><span>🪚</span> Carpenters</div>
+      <div class="who-pill"><span>🏗️</span> General Contractors</div>
+      <div class="who-pill"><span>🚿</span> Remodelers</div>
+      <div class="who-pill"><span>🛠️</span> Handymen</div>
+    </div>
+    <p class="who-note">If you do the work and send the invoice, this is for you.</p>
+  </div>
+</div>
+
+<!-- SIMPLICITY -->
+<section id="simplicity">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Why AEDEXBOOKS</div>
+      <h2 class="sec-title">The simple invoicing app for small contractors — <span class="app-cost"></span> one-time, no subscription</h2>
+      <p class="sec-sub">Most business software is built for office managers and accountants. AEDEXBOOKS is built for the person doing the work — fast, simple, and mobile-first.</p>
+    </div>
+    <div class="simplicity-grid">
+      <div class="simple-card them">
+        <div class="simple-card-label">❌ Other software</div>
+        <h3>Built for everyone — which means it works for no one on a job site</h3>
+        <ul class="pain-list">
+          <li><span class="ico">😤</span> Hours of setup before you can send a single invoice</li>
+          <li><span class="ico">💸</span> $50–$150/month whether you use it or not</li>
+          <li><span class="ico">📱</span> Desktop-first — clunky on your phone in a truck</li>
+          <li><span class="ico">🔒</span> Your data is locked in their system</li>
+          <li><span class="ico">📞</span> Required onboarding calls and training videos</li>
+          <li><span class="ico">🤯</span> Features you'll never use cluttering every screen</li>
+        </ul>
+      </div>
+      <div class="simple-card us">
+        <div class="simple-card-label">✓ AEDEXBOOKS</div>
+        <h3>Sign in once. Add a client. Send an invoice. Done.</h3>
+        <ul class="pain-list">
+          <li><span class="ico">⚡</span> Up and running in under 5 minutes — no setup required</li>
+          <li><span class="ico">💰</span> <span class="app-cost"></span> one-time — no monthly subscription, ever</li>
+          <li><span class="ico">📱</span> Mobile-first — built to use on your phone on a job site</li>
+          <li><span class="ico">📊</span> Your data lives in your own Google Drive — always accessible</li>
+          <li><span class="ico">🧠</span> No training. If you can send a text, you can use this app.</li>
+          <li><span class="ico">🎯</span> Only what a contractor actually needs. Nothing else.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Features</div>
+      <h2 class="sec-title">Everything a contractor needs. Nothing they don't.</h2>
+      <p class="sec-sub">No bloat, no add-ons, no upsells. Every feature is built around how contractors actually work.</p>
+    </div>
+
+    <!-- Hero feature card: Contractor Portal -->
+    <div class="feat-hero">
+      <div class="feat-hero-inner">
+        <div>
+          <div class="feat-hero-tag">★ Signature Feature</div>
+          <div class="feat-hero-ico">📲</div>
+          <h3>Contractor Portal — estimates from the field, straight to your app</h3>
+          <p class="feat-hero-desc">Send your sub a single link. They open it on their phone — no login, no app download — and submit their labor breakdown, materials cost, and before photos directly. You get notified, review the submission, and convert it into a client estimate in one click.</p>
+          <div class="feat-hero-callout">The only contractor app that lets your subs estimate directly from their phone — no account required.</div>
+        </div>
+        <ul class="feat-hero-bullets">
+          <li><span class="bul-ico">🔗</span>Token-gated link — no login or app needed for your sub</li>
+          <li><span class="bul-ico">📸</span>Before photos submitted with the estimate and saved to your Drive</li>
+          <li><span class="bul-ico">⚡</span>Convert a sub's estimate to a client quote in one click</li>
+          <li><span class="bul-ico">🔔</span>Instant notification when your sub submits — no follow-up calls</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Data ownership banner -->
+    <div class="data-banner">
+      <div class="data-banner-ico">🔐</div>
+      <div class="data-banner-text"><strong>Your Data Stays Yours.</strong> Your data lives in your own Google Drive — not our servers, not a subscription database. Yours.</div>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="features-grid">
+      <div class="feat-card ac-blue">
+        <div class="feat-ico ac-blue">👥</div>
+        <div class="feat-name">Client Management</div>
+        <p class="feat-desc">Every client, property, and job history in one place — searchable from your phone in seconds.</p>
+        <ul class="feat-list">
+          <li>Contact details &amp; billing address</li>
+          <li>Residential &amp; commercial clients</li>
+          <li>Multiple properties per client</li>
+          <li>Full job history &amp; notes</li>
+        </ul>
+      </div>
+      <div class="feat-card ac-teal">
+        <div class="feat-ico ac-teal">🔧</div>
+        <div class="feat-name">Job Tracking</div>
+        <p class="feat-desc">Create jobs, track their status from estimate to paid, and attach before/after photos right from your phone.</p>
+        <ul class="feat-list">
+          <li>Full Kanban status pipeline</li>
+          <li>Materials &amp; labor cost tracking</li>
+          <li>Before/after photo uploads to Drive</li>
+          <li>Subcontractor assignments</li>
+        </ul>
+      </div>
+      <div class="feat-card ac-green">
+        <div class="feat-ico ac-green">🧾</div>
+        <div class="feat-name">Invoices &amp; Estimates</div>
+        <p class="feat-desc">Generate professional PDF invoices and estimates. Email them to clients directly from the app via Gmail.</p>
+        <ul class="feat-list">
+          <li>Branded PDF documents</li>
+          <li>Send via Gmail in one tap</li>
+          <li>Tax rate &amp; payment terms</li>
+          <li>Convert estimates to invoices</li>
+        </ul>
+      </div>
+      <div class="feat-card ac-amber">
+        <div class="feat-ico ac-amber">📋</div>
+        <div class="feat-name">Tax-Ready Expense Tracking</div>
+        <p class="feat-desc">Log every expense with the right Schedule C category. Come tax time, your accountant will have everything they need.</p>
+        <ul class="feat-list">
+          <li>IRS Schedule C categories built in</li>
+          <li>Per-job expense breakdown</li>
+          <li>Receipt photo uploads</li>
+          <li>One-click tax report CSV</li>
+        </ul>
+      </div>
+      <div class="feat-card ac-purple">
+        <div class="feat-ico ac-purple">🏠</div>
+        <div class="feat-name">Properties</div>
+        <p class="feat-desc">Track multiple properties per client — essential for landlords, property managers, and multi-unit work.</p>
+        <ul class="feat-list">
+          <li>Tenant contact info</li>
+          <li>Move-in dates &amp; notes</li>
+          <li>Full job history by property</li>
+          <li>Residential &amp; commercial</li>
+        </ul>
+      </div>
+      <div class="feat-card ac-coral">
+        <div class="feat-ico ac-coral">👷</div>
+        <div class="feat-name">Subcontractors</div>
+        <p class="feat-desc">Keep your crew organized and assign them to jobs without chasing down contact info every time.</p>
+        <ul class="feat-list">
+          <li>Trade &amp; contact directory</li>
+          <li>Job assignment tracking</li>
+          <li>Notes per contractor</li>
+          <li>Quick-dial from the app</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAX SECTION -->
+<section id="taxes">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+      <div>
+        <div class="sec-eyebrow">Tax Season</div>
+        <h2 class="sec-title">Contractor expense tracking built for IRS Schedule C</h2>
+        <p class="sec-sub" style="margin-bottom:24px">Every expense you log is tagged with an IRS Schedule C category. No scrambling at the end of the year — your records are already organized the way your accountant needs them.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--green-light);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--green);font-weight:700">✓</div>
+            <div style="font-size:14px;color:var(--text2);line-height:1.55"><strong style="color:var(--text)">Quarterly totals at a glance</strong> — know where you stand before it's due</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--green-light);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--green);font-weight:700">✓</div>
+            <div style="font-size:14px;color:var(--text2);line-height:1.55"><strong style="color:var(--text)">Receipt storage</strong> — attach a photo of every receipt right from your phone</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <div style="width:22px;height:22px;border-radius:50%;background:var(--green-light);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--green);font-weight:700">✓</div>
+            <div style="font-size:14px;color:var(--text2);line-height:1.55"><strong style="color:var(--text)">Per-job breakdowns</strong> — see exactly what each job cost you in labor and materials</div>
+          </div>
+        </div>
+        <div class="tax-callout">
+          <p>Your data lives in a Google Sheet — share it directly with your accountant or bookkeeper. No exports, no screenshots, no digging through receipts in a shoebox.</p>
+        </div>
+      </div>
+      <div class="tax-cats">
+        <div class="tax-cat"><div class="tax-cat-ico">🚗</div><div><div class="tax-cat-name">Vehicle &amp; Mileage</div><div class="tax-cat-code">Schedule C · Line 9</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">🛒</div><div><div class="tax-cat-name">Materials &amp; Supplies</div><div class="tax-cat-code">Schedule C · Line 22</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">👷</div><div><div class="tax-cat-name">Subcontractors</div><div class="tax-cat-code">Schedule C · Line 11</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">🔧</div><div><div class="tax-cat-name">Tools &amp; Equipment</div><div class="tax-cat-code">Schedule C · Line 22</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">📱</div><div><div class="tax-cat-name">Phone &amp; Internet</div><div class="tax-cat-code">Schedule C · Line 25</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">🏢</div><div><div class="tax-cat-name">Office &amp; Admin</div><div class="tax-cat-code">Schedule C · Line 18</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">🛡️</div><div><div class="tax-cat-name">Insurance</div><div class="tax-cat-code">Schedule C · Line 15</div></div></div>
+        <div class="tax-cat"><div class="tax-cat-ico">📦</div><div><div class="tax-cat-name">Other Business Expenses</div><div class="tax-cat-code">Schedule C · Line 48</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXISTING DATA -->
+<section id="existing">
+  <div class="container">
+    <div class="existing-inner">
+      <div>
+        <div class="sec-eyebrow">Already Running a Business?</div>
+        <h2 class="sec-title">Start where you are — not from scratch</h2>
+        <p class="sec-sub" style="margin-bottom:28px">Already have clients in a spreadsheet or notes on your phone? AEDEXBOOKS doesn't make you start over. Your data sheet is a real Google Sheet — you can paste in existing records directly.</p>
+        <div class="existing-steps">
+          <div class="existing-step">
+            <div class="existing-num">1</div>
+            <div class="existing-step-body">
+              <h4>Get access and sign in</h4>
+              <p>The app creates your data sheet automatically on first login. Takes about 30 seconds.</p>
+            </div>
+          </div>
+          <div class="existing-step">
+            <div class="existing-num">2</div>
+            <div class="existing-step-body">
+              <h4>Open your Google Sheet</h4>
+              <p>Your data lives in a plain Google Sheet in your own Drive. Open it like any spreadsheet.</p>
+            </div>
+          </div>
+          <div class="existing-step">
+            <div class="existing-num">3</div>
+            <div class="existing-step-body">
+              <h4>Paste in your existing data</h4>
+              <p>Copy clients, jobs, or expenses from wherever you track them today. The app reads the sheet on every load.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="existing-card">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:4px">Your data — always accessible</div>
+        <div class="existing-card-row"><div class="existing-card-ico">📊</div><div><div class="existing-card-label">Storage</div><div class="existing-card-val">Google Sheets in your Drive</div></div></div>
+        <div class="existing-card-row"><div class="existing-card-ico">✏️</div><div><div class="existing-card-label">Editable</div><div class="existing-card-val">Directly in the app or in Sheets</div></div></div>
+        <div class="existing-card-row"><div class="existing-card-ico">📤</div><div><div class="existing-card-label">Export</div><div class="existing-card-val">Download as CSV, Excel, or PDF anytime</div></div></div>
+        <div class="existing-card-row"><div class="existing-card-ico">🔁</div><div><div class="existing-card-label">Migration</div><div class="existing-card-val">Paste existing data directly into your sheet</div></div></div>
+        <div class="existing-card-row"><div class="existing-card-ico">🚫</div><div><div class="existing-card-label">Lock-in</div><div class="existing-card-val">None. Your data is yours to keep.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Getting Started</div>
+      <h2 class="sec-title">Up and running in under 5 minutes</h2>
+      <p class="sec-sub">No IT. No onboarding call. No tutorial videos. If you have a Google account, you're ready.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Request access</div>
+        <p class="step-desc">Send us an email. We set up your account and grant access — usually same day.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Sign in with Google</div>
+        <p class="step-desc">The app creates a sheet in your own Google Drive. Your data is yours from day one.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Run your business</div>
+        <p class="step-desc">Add clients, create jobs, send invoices, log expenses. Works on desktop, tablet, and phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA TRUST -->
+<div class="trust-band">
+  <div class="container">
+    <div class="trust-inner">
+      <div>
+        <h2 class="trust-title">Your data stays in your Google Drive — not ours</h2>
+        <p class="trust-sub">Most business apps charge monthly and hold your data hostage. With AEDEXBOOKS, everything is stored in a Google Sheet in your own account. We never see it, store it, or own it.</p>
+        <div class="trust-points">
+          <div class="trust-point"><div class="trust-check">✓</div><div class="trust-point-text">Data stored in your Google account — open it in Sheets anytime</div></div>
+          <div class="trust-point"><div class="trust-check">✓</div><div class="trust-point-text"><span class="app-cost"></span> one-time — no monthly subscription, no per-user fees, ever</div></div>
+          <div class="trust-point"><div class="trust-check">✓</div><div class="trust-point-text">Share your sheet directly with your accountant</div></div>
+          <div class="trust-point"><div class="trust-check">✓</div><div class="trust-point-text">Revoke access anytime from your Google Account settings</div></div>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-item"><div class="trust-card-ico">📊</div><div><div class="trust-card-label">Data location</div><div class="trust-card-val">Your Google Drive</div></div></div>
+        <div class="trust-card-item"><div class="trust-card-ico">🔒</div><div><div class="trust-card-label">Authentication</div><div class="trust-card-val">Google Sign-In (OAuth 2.0)</div></div></div>
+        <div class="trust-card-item"><div class="trust-card-ico">📁</div><div><div class="trust-card-label">Files created</div><div class="trust-card-val">1 spreadsheet + job photo folders</div></div></div>
+        <div class="trust-card-item"><div class="trust-card-ico">📧</div><div><div class="trust-card-label">Email</div><div class="trust-card-val">Sent via your Gmail, on your behalf</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER NOTE -->
+<div class="founder-strip">
+  <div class="container">
+    <div class="founder-inner">
+      <p class="founder-quote">I built this because I was running my own contracting business and couldn't find anything that wasn't either too complicated, too expensive, or both. I needed something I could open on my phone between jobs. This is that.</p>
+      <div class="founder-attr">
+        <div class="founder-av">L</div>
+        <div>
+          <div class="founder-name">Levi Bernard</div>
+          <div class="founder-title">Founder, Aedex Anima LLC · Austin, TX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<section style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">Resources</div>
+      <h2 class="sec-title">Guides for running a better contracting business</h2>
+      <p class="sec-sub">Practical advice on invoicing, taxes, and tools — written by a contractor who uses this stuff every day.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+      <a href="/articles/best-invoicing-apps-contractors-2026" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:8px;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green)">Business Tools</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);line-height:1.35">Best Invoicing Apps for Contractors in 2026 (That Aren't Overkill)</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">An honest comparison of the most common options — what matters, what doesn't, and what most small operators really need.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--green);margin-top:8px">Read article →</div>
+      </a>
+      <a href="/articles/contractor-expense-tracking-schedule-c" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:8px;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green)">Taxes</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);line-height:1.35">How to Track Contractor Expenses for Tax Season: A Schedule C Guide</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">The right categories, the right habits, and how to hand your accountant everything they need without a shoebox of receipts.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--green);margin-top:8px">Read article →</div>
+      </a>
+      <a href="/articles/how-to-invoice-as-a-contractor" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:8px;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green)">Getting Paid</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);line-height:1.35">How to Send a Professional Invoice as a Contractor (And Get Paid Faster)</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">What every contractor invoice must include, how to set payment terms that get honored, and how to follow up without burning the relationship.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--green);margin-top:8px">Read article →</div>
+      </a>
+      <a href="/articles/quickbooks-overkill-for-small-contractors" style="background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:8px;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green)">Business Tools</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);line-height:1.35">Why QuickBooks Is Overkill for Most Small Contractors — And What to Use Instead</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6;flex:1">QuickBooks is powerful — but expensive and complicated for most solo operators. An honest look at when it makes sense and when it doesn't.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--green);margin-top:8px">Read article →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--white)">
+  <div class="container">
+    <div class="sec-header centered">
+      <div class="sec-eyebrow">FAQ</div>
+      <h2 class="sec-title">Common questions</h2>
+      <p class="sec-sub">Everything you need to know before getting started.</p>
+    </div>
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:4px">
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          How much does AEDEXBOOKS cost?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">AEDEXBOOKS is a <strong>one-time payment of <span class="app-cost"></span></strong>. No monthly subscription, no per-user fees, no recurring charges. Pay once and use it forever — all future updates included. Compare that to $360–$1,000+ per year for QuickBooks.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          What do I need to get started?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Just a Google account. The app runs entirely in your browser — no download, no install. On first sign-in it automatically creates a Google Sheet in your Drive to store all your data.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Where does my data get stored?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Everything — clients, jobs, invoices, expenses — is stored in a single Google Sheet in your own Google Drive. Aedex Anima LLC never sees, stores, or owns your business data. You can open that sheet directly anytime and share it with your accountant or bookkeeper.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Does it work on my phone?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Yes — mobile is the primary design target. The app is built to be used on a phone between jobs, not at a desk. You can add it to your home screen like a native app (it's a PWA). Works on iPhone and Android.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          I already have clients in a spreadsheet. Do I have to start over?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">No. Because your data lives in a real Google Sheet, you can paste existing clients, jobs, or expense records directly into the sheet. The app reads it on every load. There's no migration tool needed — just copy and paste into the right columns.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Can I send invoices directly to clients?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Yes. The app generates a professional PDF invoice and emails it to your client directly from your Gmail account with one tap. The email comes from you — not from a third-party service — so it lands in their inbox like a normal email.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          How does expense tracking help with taxes?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Every expense you log is tagged with an IRS Schedule C category — materials, vehicle, subcontractors, tools, phone, insurance, and more. At tax time your records are already organized the way your accountant needs them. You can share the Google Sheet directly with your CPA — no exports or screenshots needed.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Does it work for my trade? I'm not a handyman.
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Yes. AEDEXBOOKS is built for any contractor or service business — plumbers, electricians, roofers, HVAC techs, lawn care, painters, remodelers, general contractors. If you take on jobs and send invoices, it works for you.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          What happens to my data if I stop using the app?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Nothing happens to it — it stays in your Google Drive exactly as-is. You can download it as a CSV or Excel file, open it directly in Google Sheets, or just leave it there. There's no vendor lock-in and nothing to cancel.</p>
+        </div>
+      </details>
+
+      <details style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+        <summary style="padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px">
+          How do I get access?
+          <span style="font-size:20px;color:var(--green);flex-shrink:0;font-weight:300">+</span>
+        </summary>
+        <div style="padding:0 22px 18px;font-size:14px;color:var(--text2);line-height:1.7;border-top:1px solid var(--border)">
+          <p style="margin-top:16px">Click any "Request Access" button on this page and fill out the short form — takes under a minute. We review every request and get you set up usually same day. No sales call, no demo, no credit card.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to get organized?</h2>
+      <div style="display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:14px 28px;margin-bottom:24px">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:4px">One-time price</div>
+        <div style="font-size:36px;font-weight:700;color:#74d4a4;font-family:'DM Mono',monospace"><span class="app-cost"></span></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">No monthly fee · Updates included · Use forever</div>
+      </div>
+      <p>Reach out and we'll get you set up — usually same day. No sales call, no demo required.</p>
+      <div class="cta-btns">
+        <a href="#" onclick="openModal();return false;" class="btn-cta-white">Request Access →</a>
+        <a href="https://aedexbooks.aedexanima.com" class="btn-cta-outline" target="_blank" rel="noopener">Open App</a>
+      </div>
+      <p class="cta-note">Already have access? <a href="https://aedexbooks.aedexanima.com" style="color:rgba(255,255,255,.6);text-decoration:underline" target="_blank" rel="noopener">Sign in at aedexbooks.aedexanima.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="margin-bottom:14px"><img src="/logo.png" alt="Aedex Anima LLC" style="height:56px;width:auto;background:#fff;border-radius:8px;padding:6px 10px"></div>
+        <div class="footer-brand-sub">Handyman &amp; Remodeling · Austin, TX</div>
+        <p style="font-size:13px;line-height:1.65;max-width:280px">Quality work at fair prices. Serving Austin and Central Texas. Locally owned and operated.</p>
+      </div>
+      <div class="footer-col">
+        <h4>AEDEXBOOKS</h4>
+        <a href="#features">Features</a>
+        <a href="#taxes">Tax tracking</a>
+        <a href="#existing">Import existing data</a>
+        <a href="#how">How it works</a>
+        <a href="https://aedexbooks.aedexanima.com" target="_blank" rel="noopener">Open App</a>
+        <a href="#" onclick="openModal();return false;">Request Access</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>Aedex Anima</h4>
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Get a Quote</a>
+        <a href="tel:5128882668">512-888-2668</a>
+        <a href="mailto:aedexanima@gmail.com">aedexanima@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Aedex Anima LLC · Austin, TX</p>
+      <p style="color:rgba(255,255,255,.3)">Built in Austin</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/pricing.js"></script>
+
+<!-- REQUEST ACCESS MODAL -->
+<div class="modal-overlay" id="access-modal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+      <h3>Request Access to AEDEXBOOKS</h3>
+      <p>Tell us a bit about your business and we'll get you set up — usually same day.</p>
+    </div>
+
+    <div class="modal-success" id="modal-success">
+      <div class="modal-success-ico">✅</div>
+      <h3>Request received!</h3>
+      <p>We'll review your info and reach out within 1 business day to get you set up. Keep an eye on your email.</p>
+    </div>
+
+    <div class="modal-body" id="modal-form-wrap">
+      <form id="access-form" action="https://formspree.io/f/mjgjoegb" method="POST" onsubmit="handleSubmit(event)">
+
+        <div class="modal-row">
+          <div class="modal-field">
+            <label for="f-name">Full name *</label>
+            <input type="text" id="f-name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="modal-field">
+            <label for="f-biz">Business name</label>
+            <input type="text" id="f-biz" name="business_name" placeholder="Smith Plumbing LLC">
+          </div>
+        </div>
+
+        <div class="modal-field">
+          <label for="f-type">Business type *</label>
+          <select id="f-type" name="business_type" required>
+            <option value="">— select your trade —</option>
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Roofer</option>
+            <option>HVAC Technician</option>
+            <option>Lawn Care / Landscaping</option>
+            <option>Painter</option>
+            <option>Carpenter / Handyman</option>
+            <option>General Contractor</option>
+            <option>Remodeler</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-field">
+            <label for="f-email">Email address *</label>
+            <input type="email" id="f-email" name="email" placeholder="john@smithplumbing.com" required>
+          </div>
+          <div class="modal-field">
+            <label for="f-phone">Phone number</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="512-555-0100">
+          </div>
+        </div>
+
+        <div class="modal-field">
+          <label for="f-current">How do you currently manage your business?</label>
+          <select id="f-current" name="current_tool">
+            <option value="">— optional —</option>
+            <option>Spreadsheets / Excel</option>
+            <option>QuickBooks</option>
+            <option>Jobber</option>
+            <option>Paper / nothing</option>
+            <option>Other software</option>
+          </select>
+        </div>
+
+        <div class="modal-field">
+          <label for="f-notes">Anything else we should know?</label>
+          <textarea id="f-notes" name="notes" placeholder="Team size, specific features you need, questions..."></textarea>
+        </div>
+
+        <button type="submit" class="modal-submit" id="modal-submit-btn">Send Request →</button>
+        <p class="modal-note">We'll reach out within 1 business day. No spam, ever.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function showScreen(name, btn){
+  document.querySelectorAll('.screenshot-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.screenshots-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+function openModal(){
+  document.getElementById('access-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('access-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleOverlayClick(e){
+  if(e.target===document.getElementById('access-modal')) closeModal();
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeModal();
+});
+
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('modal-submit-btn');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  const form=document.getElementById('access-form');
+  const data=new FormData(form);
+  try{
+    const res=await fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('modal-form-wrap').style.display='none';
+      const s=document.getElementById('modal-success');
+      s.classList.add('show');
+    } else {
+      btn.disabled=false;
+      btn.textContent='Send Request →';
+      alert('Something went wrong. Please email us directly at aedexanima@gmail.com');
+    }
+  } catch(err){
+    btn.disabled=false;
+    btn.textContent='Send Request →';
+    alert('Something went wrong. Please email us directly at aedexanima@gmail.com');
+  }
+}
+
+// pricing loaded via /js/pricing.js
+function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobile-menu').classList.remove('open')}
+document.addEventListener('click',function(e){
+  const menu=document.getElementById('mobile-menu');
+  const hamburger=document.querySelector('.hamburger');
+  if(menu.classList.contains('open')&&!menu.contains(e.target)&&!hamburger.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+document.querySelectorAll('details').forEach(d=>{
+  d.addEventListener('toggle',()=>{
+    const icon=d.querySelector('summary span');
+    if(icon) icon.textContent=d.open?'−':'+';
+  });
+});
+</script>
+</body>
+</html>
