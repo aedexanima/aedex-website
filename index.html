@@ -6,7 +6,7 @@
 <title>Aedex Anima — Handyman & Remodeling | Austin, TX</title>
 <meta name="description" content="Aedex Anima LLC — Austin's trusted handyman and remodeling crew. Fair prices, quality work. Plumbing, electrical, carpentry, painting, HVAC and more. Serving Austin, Cedar Park, Round Rock, Georgetown, and Central Texas.">
 <link rel="canonical" href="https://aedexanima.com/">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/logo.png">
 
 <!-- Open Graph -->
@@ -225,7 +225,9 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
 .footer-bottom p{font-size:12px}
 
 /* ── RESPONSIVE ── */
+.aedex-band-inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
 @media(max-width:960px){
+  .aedex-band-inner{grid-template-columns:1fr;gap:24px}
   .hero-inner{grid-template-columns:1fr}
   .hero h1{font-size:40px}
   .hero-photo{display:none}
@@ -264,7 +266,7 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo" style="display:flex;flex-direction:column">
-        <img src="logo.svg" alt="Aedex Anima LLC">
+        <img src="logo.png" alt="Aedex Anima LLC">
         <span class="nav-logo-sub">Handyman &amp; Remodeling</span>
       </a>
       <div class="nav-links">
@@ -272,6 +274,8 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
         <a href="#about">About</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#area-section">Service Area</a>
+        <a href="/aedexbooks" style="color:var(--green);font-weight:600">AEDEXBOOKS</a>
+        <a href="/portal.html">Client Portal</a>
         <a href="#contact" class="btn-nav">Get a Quote</a>
       </div>
       <button class="hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
@@ -284,6 +288,8 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
     <a href="#area-section" onclick="closeMenu()">Service Area</a>
+    <a href="/aedexbooks" onclick="closeMenu()">AEDEXBOOKS App</a>
+    <a href="/portal.html" onclick="closeMenu()">Client Portal</a>
     <a href="#contact" onclick="closeMenu()">Get a Free Quote →</a>
   </div>
 </nav>
@@ -549,6 +555,38 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
           <span class="article-card-link">Read article →</span>
         </div>
       </a>
+      <a href="/articles/best-invoicing-apps-contractors-2026" class="article-card">
+        <div class="article-card-body">
+          <div class="article-card-tag">Business Tools</div>
+          <div class="article-card-title">Best Invoicing Apps for Contractors in 2026 (That Aren't Overkill)</div>
+          <div class="article-card-desc">An honest comparison of the most common options contractors actually use — what matters, what doesn't, and what most small operators really need.</div>
+          <span class="article-card-link">Read article →</span>
+        </div>
+      </a>
+      <a href="/articles/contractor-expense-tracking-schedule-c" class="article-card">
+        <div class="article-card-body">
+          <div class="article-card-tag">Taxes</div>
+          <div class="article-card-title">How to Track Contractor Expenses for Tax Season: A Schedule C Guide</div>
+          <div class="article-card-desc">The right categories, the right habits, and how to hand your accountant everything they need without a shoebox of receipts.</div>
+          <span class="article-card-link">Read article →</span>
+        </div>
+      </a>
+      <a href="/articles/how-to-invoice-as-a-contractor" class="article-card">
+        <div class="article-card-body">
+          <div class="article-card-tag">Getting Paid</div>
+          <div class="article-card-title">How to Send a Professional Invoice as a Contractor (And Get Paid Faster)</div>
+          <div class="article-card-desc">What every contractor invoice must include, how to set payment terms that get honored, and how to follow up without burning the relationship.</div>
+          <span class="article-card-link">Read article →</span>
+        </div>
+      </a>
+      <a href="/articles/quickbooks-overkill-for-small-contractors" class="article-card">
+        <div class="article-card-body">
+          <div class="article-card-tag">Business Tools</div>
+          <div class="article-card-title">Why QuickBooks Is Overkill for Most Small Contractors — And What to Use Instead</div>
+          <div class="article-card-desc">QuickBooks is powerful — but expensive and complicated for most solo operators. An honest look at when it makes sense and when it doesn't.</div>
+          <span class="article-card-link">Read article →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -680,6 +718,28 @@ footer{background:var(--text);color:rgba(255,255,255,.65);padding:44px 0 24px}
     </div>
   </div>
 </section>
+
+<!-- ═══ AEDEXBOOKS BAND ═══ -->
+<div style="background:var(--green-dark);padding:52px 0">
+  <div class="container">
+    <div class="aedex-band-inner">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:'DM Mono',monospace;margin-bottom:10px">Also a contractor?</div>
+        <h2 style="font-size:26px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.3px;line-height:1.25">We built the business app we always wished we had</h2>
+        <ul style="list-style:none;padding:0;margin:0 0 4px;display:flex;flex-direction:column;gap:7px">
+          <li style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.5"><span style="color:#86efac;margin-right:8px">✓</span>Send a link to your sub — they submit their estimate and before photos from their phone</li>
+          <li style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.5"><span style="color:#86efac;margin-right:8px">✓</span>Turn a sub's estimate into a client quote in one click</li>
+          <li style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.5"><span style="color:#86efac;margin-right:8px">✓</span>Invoices and estimates sent from your Gmail as PDFs — no third-party email service</li>
+          <li style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.5"><span style="color:#86efac;margin-right:8px">✓</span>Every photo, receipt, and document organized in your Google Drive</li>
+          <li style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.5"><span style="color:#86efac;margin-right:8px">✓</span>Your data lives in your Google Sheet — not a black box. No monthly fee.</li>
+        </ul>
+      </div>
+      <div style="flex-shrink:0">
+        <a href="/aedexbooks" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--green-dark);padding:13px 22px;border-radius:8px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .15s" onmouseover="this.style.background='#E8F5EE'" onmouseout="this.style.background='#fff'">Learn about AEDEXBOOKS →</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>

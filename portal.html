@@ -78,6 +78,29 @@ tbody tr:hover td{background:#fafaf7}
 /* EMPTY */
 .empty{text-align:center;padding:32px;color:var(--text3);font-size:14px}
 
+/* PAYMENT INFO */
+.pay-info{margin-top:12px;background:var(--amber-light);border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;font-size:13px;color:var(--amber)}
+.pay-info strong{display:block;margin-bottom:2px;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+
+/* DOC MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:12px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.modal-actions{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border)}
+.modal-actions-right{display:flex;gap:8px}
+.btn-sm{padding:7px 14px;border-radius:7px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text2)}
+.btn-sm.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-sm:hover{opacity:.85}
+#doc-preview{padding:28px 32px;font-family:'DM Sans',sans-serif}
+
+/* PRINT STYLES */
+@media print{
+  nav,#login-screen,#loading-screen,.portal-header,.card:not(#print-card),.modal-actions{display:none!important}
+  .modal-overlay{position:static!important;background:none!important;padding:0!important;display:block!important}
+  .modal-box{box-shadow:none!important;max-height:none!important;max-width:100%!important}
+  .modal-actions{display:none!important}
+}
+
 /* LOADING */
 #loading-screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 68px);gap:12px;color:var(--text3)}
 .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}
@@ -153,6 +176,20 @@ tbody tr:hover td{background:#fafaf7}
       <div class="card-title">Invoices</div>
       <div id="invoices-section"><div class="empty">Loading...</div></div>
     </div>
+  </div>
+</div>
+
+<!-- DOCUMENT VIEW MODAL -->
+<div class="modal-overlay" id="doc-modal" onclick="handleModalClick(event)">
+  <div class="modal-box">
+    <div class="modal-actions">
+      <div style="font-size:13px;font-weight:600;color:var(--text2)" id="modal-label">Invoice</div>
+      <div class="modal-actions-right">
+        <button class="btn-sm primary" onclick="printDoc()">⬇ Download / Print</button>
+        <button class="btn-sm" onclick="closeDocModal()">Close</button>
+      </div>
+    </div>
+    <div id="doc-preview"></div>
   </div>
 </div>
 
@@ -259,6 +296,9 @@ async function loadPortal(session){
   }
 }
 
+// ── DOC STORE (avoids JSON-in-HTML-attribute escaping issues) ──
+let _docs = {};
+
 // ── RENDER PORTAL ─────────────────────────────────────────────
 function showPortal(data, session){
   const email=localStorage.getItem('portal_email')||data.email||'';
@@ -273,7 +313,7 @@ function showPortal(data, session){
     ?`<div class="tbl-wrap"><table>
         <thead><tr><th>Job</th><th>Property</th><th>Status</th><th>Started</th></tr></thead>
         <tbody>${activeJobs.map(j=>`<tr>
-          <td><strong>${esc(j.title)}</strong></td>
+          <td><strong>${esc(j.title||'—')}</strong></td>
           <td style="color:var(--text2)">${esc(j.propertyAddress||'—')}</td>
           <td><span class="badge ${j.status}">${stageLabel(j.status)}</span></td>
           <td style="color:var(--text3)">${fmtDate(j.startDate)}</td>
@@ -281,35 +321,153 @@ function showPortal(data, session){
       </table></div>`
     :'<div class="empty">No active jobs at the moment.</div>';
 
+  // Store all docs by id for safe lookup
+  (data.documents||[]).forEach(d=>{ _docs[d.id]=d; });
+
   // Estimates
   const estimates=(data.documents||[]).filter(d=>d.type==='estimate');
   document.getElementById('estimates-section').innerHTML=estimates.length
     ?`<div class="tbl-wrap"><table>
-        <thead><tr><th>Estimate #</th><th>Date</th><th>Total</th></tr></thead>
+        <thead><tr><th>Estimate #</th><th>Date</th><th>Total</th><th></th></tr></thead>
         <tbody>${estimates.map(d=>`<tr>
           <td><strong>${esc(d.number||'—')}</strong></td>
           <td style="color:var(--text3)">${fmtDate(d.date)}</td>
           <td style="font-family:'DM Mono',monospace">${fmt(d.total)}</td>
+          <td><button class="btn-sm" onclick="viewDoc('${d.id}')">View</button></td>
         </tr>`).join('')}</tbody>
       </table></div>`
     :'<div class="empty">No estimates on file.</div>';
 
   // Invoices
   const invoices=(data.documents||[]).filter(d=>d.type==='invoice');
-  document.getElementById('invoices-section').innerHTML=invoices.length
+  const unpaidInvoices=invoices.filter(d=>!d.paid);
+  let invoiceHTML=invoices.length
     ?`<div class="tbl-wrap"><table>
-        <thead><tr><th>Invoice #</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+        <thead><tr><th>Invoice #</th><th>Date</th><th>Due</th><th>Total</th><th>Status</th><th></th></tr></thead>
         <tbody>${invoices.map(d=>`<tr>
           <td><strong>${esc(d.number||'—')}</strong></td>
           <td style="color:var(--text3)">${fmtDate(d.date)}</td>
+          <td style="color:${d.paid?'var(--text3)':'var(--amber)'}">${d.dueDate?fmtDate(d.dueDate):'—'}</td>
           <td style="font-family:'DM Mono',monospace">${fmt(d.total)}</td>
           <td><span class="badge ${d.paid?'paid':'unpaid'}">${d.paid?'Paid':'Unpaid'}</span></td>
+          <td><button class="btn-sm" onclick="viewDoc('${d.id}')">View</button></td>
         </tr>`).join('')}</tbody>
       </table></div>`
     :'<div class="empty">No invoices on file.</div>';
 
+  if(unpaidInvoices.length){
+    invoiceHTML+=`<div class="pay-info">
+      <strong>How to pay</strong>
+      Zelle: <strong>512-888-2668</strong> (Aedex Anima LLC) · Or reply to your invoice email and we'll sort it out.
+    </div>`;
+  }
+  document.getElementById('invoices-section').innerHTML=invoiceHTML;
+
   document.getElementById('loading-screen').style.display='none';
   document.getElementById('portal-screen').style.display='block';
+}
+
+// ── DOCUMENT VIEW MODAL ────────────────────────────────────────
+function viewDoc(id){
+  const d=_docs[id];
+  if(!d) return;
+  const isEst=d.type==='estimate';
+  const label=isEst?'Estimate':'Invoice';
+  document.getElementById('modal-label').textContent=`${label} #${d.number||'—'}`;
+
+  let lineItems=[];
+  try{lineItems=typeof d.lineItems==='string'?JSON.parse(d.lineItems):(d.lineItems||[]);}catch(e){}
+
+  const rowsHtml=lineItems.map(li=>{
+    const amount=(parseFloat(li.price)||0)*(parseFloat(li.qty)||1);
+    const qtyLabel=parseFloat(li.qty)>1?` (×${li.qty})`:'';
+    return`<tr style="border-bottom:1px solid #f0eee8">
+      <td style="padding:8px 12px;color:#333;font-size:12px">${esc(li.desc||'—')}${qtyLabel}</td>
+      <td style="padding:8px 12px;text-align:right;font-family:'DM Mono',monospace;font-size:12px;color:#111;white-space:nowrap">${fmt(amount)}</td>
+    </tr>`;
+  }).join('');
+
+  const totalsHtml=`
+    <div style="margin-left:auto;max-width:200px;border:1px solid #e8e8e8;border-radius:5px;overflow:hidden;margin-bottom:${isEst?'0':'14px'}">
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;font-size:11px;color:#555;background:#fafafa">
+        <span>Subtotal</span><span style="font-family:'DM Mono',monospace">${fmt(d.subtotal||d.total)}</span>
+      </div>
+      ${(d.taxRate&&d.taxAmt)?`<div style="display:flex;justify-content:space-between;padding:7px 12px;font-size:11px;color:#555;background:#fafafa;border-top:1px solid #eee">
+        <span>Tax (${d.taxRate}%)</span><span style="font-family:'DM Mono',monospace">${fmt(d.taxAmt)}</span>
+      </div>`:''}
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;font-size:12px;font-weight:700;color:#fff;background:#222">
+        <span>TOTAL</span><span style="font-family:'DM Mono',monospace">${fmt(d.total)}</span>
+      </div>
+    </div>`;
+
+  const paymentHtml=!isEst&&!d.paid?`
+    <div style="background:#FEF3C7;border:1px solid #FDE68A;border-radius:7px;padding:11px 14px;font-size:12px;color:#92400E;margin-top:14px">
+      <strong style="display:block;margin-bottom:2px">How to pay</strong>
+      Zelle: <strong>512-888-2668</strong> (Aedex Anima LLC) · Or reply to your invoice email.
+    </div>`:'';
+
+  document.getElementById('doc-preview').innerHTML=`
+    <!-- Header -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+      <div>
+        <div style="font-size:20px;font-weight:700;letter-spacing:-.5px;color:#2D6A4F">AEDEX</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:1.2px;color:#555;text-transform:uppercase;margin-top:3px">Aedex Anima LLC · Austin, TX</div>
+      </div>
+      <div style="text-align:right">
+        <div style="display:inline-block;background:#1a1a1a;color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;padding:3px 9px;border-radius:3px;margin-bottom:5px">${label.toUpperCase()}</div>
+        <div style="font-size:14px;color:#666;font-family:'DM Mono',monospace;letter-spacing:1px">${esc(d.number||'—')}</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e0e0e0;margin-bottom:14px"></div>
+    <!-- Billed To + Dates -->
+    <div style="display:flex;justify-content:space-between;margin-bottom:16px;gap:16px;font-size:12px">
+      <div style="line-height:1.8;flex:1">
+        <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#999;text-transform:uppercase;margin-bottom:3px">Billed To</div>
+        ${d.clientName?`<div style="font-weight:600;color:#111;font-size:13px">${esc(d.clientName)}</div>`:''}
+        ${d.propertyAddress||d.clientAddress?`<div style="color:#555">${esc(d.propertyAddress||d.clientAddress)}</div>`:''}
+        ${d.clientEmail?`<div style="color:#555">${esc(d.clientEmail)}</div>`:''}
+      </div>
+      <div style="line-height:1.8;text-align:right;font-size:11px;min-width:140px">
+        <div><span style="color:#999">Date:</span> <strong>${fmtDate(d.date)}</strong></div>
+        ${!isEst&&d.dueDate?`<div><span style="color:#999">Due:</span> <strong style="color:${d.paid?'inherit':'#B45309'}">${fmtDate(d.dueDate)}</strong></div>`:''}
+        ${!isEst?`<div style="margin-top:4px"><span class="badge ${d.paid?'paid':'unpaid'}" style="font-size:10px">${d.paid?'Paid':'Unpaid'}</span></div>`:''}
+        <div style="color:#555;margin-top:2px">Levi Bernard · 512-888-2668</div>
+      </div>
+    </div>
+    <!-- Line items -->
+    ${lineItems.length?`<table style="width:100%;border-collapse:collapse;margin-bottom:12px">
+      <thead><tr style="background:#1a1a1a">
+        <th style="text-align:left;padding:7px 12px;font-size:9px;font-weight:700;color:#fff;letter-spacing:.8px">SERVICE</th>
+        <th style="text-align:right;padding:7px 12px;font-size:9px;font-weight:700;color:#fff;letter-spacing:.8px">AMOUNT</th>
+      </tr></thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>`:'<p style="font-size:12px;color:#8A8880;margin-bottom:12px">No line items on file.</p>'}
+    <!-- Totals -->
+    ${totalsHtml}
+    <!-- Payment -->
+    ${paymentHtml}
+    ${d.notes?`<div style="font-size:11px;color:#888;font-style:italic;margin-top:12px;padding:8px 12px;border-left:2px solid #e0e0e0">${esc(d.notes)}</div>`:''}
+    ${isEst&&String(d.laborDisclaimer).toLowerCase()!=='false'?`<div style="font-size:11px;color:#aaa;text-align:center;margin-top:10px">This estimate covers labor only and does not include the cost of materials.</div>`:''}
+    <!-- Footer -->
+    <div style="border-top:1px solid #e8e8e8;margin-top:20px;padding-top:12px;display:flex;justify-content:space-between;font-size:10px;color:#aaa">
+      <span>Thank you for your business.</span>
+      <span>aedexanima@gmail.com · 512-888-2668</span>
+    </div>
+  `;
+
+  document.getElementById('doc-modal').classList.add('open');
+}
+
+function closeDocModal(){
+  document.getElementById('doc-modal').classList.remove('open');
+}
+
+function handleModalClick(e){
+  if(e.target===document.getElementById('doc-modal')) closeDocModal();
+}
+
+function printDoc(){
+  window.print();
 }
 
 // ── LOGOUT ─────────────────────────────────────────────────────
@@ -339,7 +497,7 @@ function showLogin(){
 function fmt(n){return'$'+Number(n||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
 function fmtDate(d){if(!d||d==='—')return'—';try{const[y,m,dd]=d.split('T')[0].split('-');return`${m}/${dd}/${y}`;}catch{return d;}}
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML;}
-function stageLabel(s){return{['estimate-sent']:'Estimate Sent',['progress']:'In Progress',['awaiting-payment']:'Awaiting Payment',['paid']:'Paid'}[s]||s;}
+function stageLabel(s){return{['estimate-sent']:'Estimate Sent',['in-progress']:'In Progress',['progress']:'In Progress',['invoice-sent']:'Invoice Sent',['awaiting-payment']:'Awaiting Payment',['paid']:'Paid',['approved']:'Approved',['cancelled']:'Cancelled'}[s]||s;}
 
 init();
 </script>
